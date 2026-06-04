@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=/es/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        const userLang = navigator.language.slice(0, 2).toLowerCase();
+
+        if (userLang === 'es') {
+        window.location.replace('/es/index.html');
+        } else {
+        window.location.replace('/en/index.html');
+        }
+    </script>
+</head>
+<body>
+    <p>If you are not redirected automatically, choose your language:</p>
+    <a href="/en/index.html" style="margin-right: 15px; color: black; font-weight: bold;">English</a>
+    <a href="/es/index.html" style="color: black; font-weight: bold;">Español</a>
+</body>
+</html>

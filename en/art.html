@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art & Illustration | YOYI.THE STUDIO</title>
+
+    <meta name="description" content="Galería de arte, ilustración digital y proyectos creativos de Johana Dávila (YOYI), diseñadora multimedial en Argentina.">
+    <meta name="keywords" content="Diseñadora Multimedia Argentina, Ilustradora Argentina, Arte Digital, Ilustración">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Johana Dávila",
+            "jobTitle": "Diseñadora Multimedial e Ilustradora",
+            "url": "https://www.yoyithestudio.com/art.html"
+        }
+    </script>
+
+    <link rel="icon" type="image/webp" href="../assets/branding/favicon-32x32.webp">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- LIBRERÍA P5.JS PARA EL EYEBALL BUDDY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body class="bg-[#1C1C1C]">
+    <div id="app-wrapper" class="relative w-full overflow-x-hidden">
+
+        <nav id="navbar">
+            <div class="nav-container max-w-7xl mx-auto flex justify-between items-center bg-[#FFF8F0] rounded-full px-6 py-3 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <a href="index.html" class="logo-pop cursor-pointer">
+                    <img src="../assets/branding/yoyi-color.webp" alt="YOYI Logo" class="h-10 md:h-12 w-auto" loading="eager">
+                </a>
+
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="index.html#projects" class="nav-pill">← Back to Home</a>
+
+                    <!-- Language Switcher (Desktop) -->
+                    <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
+                        <button onclick="switchLanguage('en')" class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden" aria-label="English Website">
+                            <img src="https://flagcdn.com/w40/us.png" alt="English" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="switchLanguage('es')" class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden" aria-label="Spanish Website">
+                            <img src="https://flagcdn.com/w40/es.png" alt="Spanish" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[100] p-8 flex flex-col items-center justify-center gap-6 bg-[#1C1C1C] text-white">
+            <button id="closeMobileMenu" class="absolute top-6 right-6 p-2 text-white hover:text-yoyi-pink transition-colors">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <a href="index.html#projects" class="mobile-nav-link font-display text-2xl text-white mb-4">← Back to Home</a>
+            <div class="w-16 border-t-2 border-white/20 my-2"></div>
+
+            <a href="art.html" class="mobile-nav-link font-display text-3xl text-yoyi-green hover:scale-105 transition-transform uppercase text-center">Art & Illustration</a>
+            <a href="audiovisual.html" class="mobile-nav-link font-display text-3xl text-yoyi-yellow hover:scale-105 transition-transform uppercase text-center">Motion Design</a>
+            <a href="branding.html" class="mobile-nav-link font-display text-3xl text-yoyi-pink hover:scale-105 transition-transform uppercase text-center">Branding</a>
+            <a href="uxui.html" class="mobile-nav-link font-display text-3xl text-yoyi-blue hover:scale-105 transition-transform uppercase text-center">Web & App Design</a>
+
+            <!-- Language Switcher (Mobile) -->
+            <div class="flex items-center gap-6 mt-6 pt-6 border-t-2 border-white/10 w-full justify-center">
+                <button onclick="switchLanguage('en')" class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                    aria-label="English Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white bg-[#1C1C1C] text-white flex items-center justify-center text-lg">EN</span>
+                </button>
+                <button onclick="switchLanguage('es')" class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                    aria-label="Spanish Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white/50 bg-[#1C1C1C] text-white flex items-center justify-center text-lg">ES</span>
+                </button>
+            </div>
+        </div>
+
+        <header class="pt-40 md:pt-48 pb-16 md:pb-24 px-6 bg-white border-b-8 border-black text-black">
+            <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+                <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 lg:mb-6 text-black leading-none tracking-tighter w-full">
+                    <!-- Mobile: ILLUSTRATIONS -->
+                    <span class="block lg:hidden text-yoyi-pink uppercase">Illustrations</span>
+                    <!-- Desktop: Art & Illustration -->
+                    <span class="hidden lg:block">Art & <span class="text-yoyi-pink">Illustration</span></span>
+                </h1>
+                <p class="font-mono text-sm sm:text-base lg:text-xl text-black/80 max-w-2xl leading-relaxed">
+                    This collection is a mix of commissioned work, passion projects, and just random things I’m into,
+                    like music, food, and whatever else catches my eye.
+                </p>
+                <div class="font-mono text-[10px] sm:text-xs text-black/40 mt-6 uppercase tracking-widest">
+                    By Johana Dávila ✺
+                </div>
+            </div>
+        </header>
+
+        <main class="py-24 px-6 max-w-7xl mx-auto min-h-screen relative">
+
+            <div id="art-grid" class="columns-1 md:columns-2 lg:columns-3 gap-x-10">
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="yoyixthevault">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <video src="../assets/art/yoyixthevault.webm" alt="yoyixthevault" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"></video>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">yoyixthevault</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="portrait">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/portrait.webp" alt="portrait" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">portrait</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="DAILY DAILY">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/dailyoyi.webp" alt="DAILY DAILY" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">DAILY DAILY</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="fashion icon">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/glassesyoyi.webp" alt="fashion icon" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">fashion icon</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="whothefuckisyoyi">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/whothefuckisyoyi.webp" alt="whothefuckisyoyi" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">whothefuckisyoyi</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="2023 selfportrait">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/yoyicheetah.webp" alt="2023 selfportrait" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">2023 selfportrait</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="Post-it fan">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/yoyiflies.webp" alt="Post-it fan" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">Post-it fan</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="close your eyes">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/yoyivect.webp" alt="close your eyes" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">close your eyes</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="whatsgood">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/whatsgood.webp" alt="whatsgood" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">whatsgood</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="ouioui">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/ouioui.webp" alt="ouioui" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">ouioui</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="apaixonada">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/apaixonada.webp" alt="apaixonada" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">apaixonada</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="cheverecambur">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/cheverecambur.webp" alt="cheverecambur" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">cheverecambur</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="discovibe">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/discovibe.webp" alt="discovibe" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">discovibe</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="eachlayer">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/eachlayer.webp" alt="eachlayer" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">eachlayer</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="baking for you">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/eggs.webp" alt="baking for you" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">baking for you</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="flaneurz">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/flaneurz.webp" alt="flaneurz" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">flaneurz</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="Dirty flyer">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/flyerdirty.webp" alt="Dirty flyer" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">Dirty flyer</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="hooploverlatinagang">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/hooploverlatinagang.webp" alt="hooploverlatinagang" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">hooploverlatinagang</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="menina">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/menina.webp" alt="menina" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">menina</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="meow">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/meow.webp" alt="meow" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">meow</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="RUDE Vegetables collection">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/radish.webp" alt="RUDE Vegetables collection" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">RUDE Vegetables collection</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="RUDE VEGETABLES COLLECTION">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/carrotline.webp" alt="RUDE VEGETABLES COLLECTION" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">RUDE VEGETABLES COLLECTION</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="RUDE VEGETABLES COLLECTION">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/lilgarlic.webp" alt="RUDE VEGETABLES COLLECTION" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">RUDE VEGETABLES COLLECTION</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="esteman">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/esteman.webp" alt="esteman" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-blue transition-colors">esteman</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="caloncho">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/caloncho.webp" alt="caloncho" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">caloncho</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="ferroandtheferros coverart">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/ferroandtheferroscoverart.webp" alt="ferroandtheferros coverart" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">ferroandtheferros coverart</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="FROM A MESS TO THE MASSES">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/yoyiabrumada.webp" alt="FROM A MESS TO THE MASSES" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-green transition-colors">FROM A MESS TO THE MASSES</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="rowleyvans">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/rowleyvans.webp" alt="rowleyvans" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-pink transition-colors">rowleyvans</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <div class="art-card group cursor-pointer flex flex-col break-inside-avoid mb-16 w-full" data-title="sofia2022">
+                    <div class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/art/sofia2022.webp" alt="sofia2022" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-xl text-white group-hover:text-yoyi-yellow transition-colors">sofia2022</p>
+                        <p class="font-mono text-xs text-white/50 uppercase tracking-widest mt-1">Illustration</p>
+                    </div>
+                </div>
+
+                <!-- BOTÓN LOAD MORE (Visible solo en pantallas pequeñas) -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 w-full mt-8 flex justify-center lg:hidden">
+                    <button id="loadMoreArtBtn" class="font-display text-xl px-10 py-4 bg-[#1C1C1C] text-white border-4 border-black rounded-full shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:bg-yoyi-pink transition-colors uppercase tracking-wide">
+                        Load More ✦
+                    </button>
+                </div>
+
+            </div>
+        </main>
+
+        <section class="py-20 px-6 bg-[#F6C445] border-t-8 border-black relative z-10">
+            <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 reveal">
+                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                    <h2 class="font-display text-5xl md:text-6xl text-black uppercase mb-6 leading-tight">
+                        They look pretty cool in <span class="text-white drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">real life</span>, right?
+                    </h2>
+                    <p class="font-mono text-xl text-black/80 mb-8 font-bold">
+                        Commissions are always open and i'm always down to draw
+                    </p>
+                    <a href="https://forms.gle/FRv6WY26vhGmYYKQ6" target="_blank" class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-black bg-[#1C1C1C] text-white hover:bg-white hover:!text-black hover:scale-105 transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                        Commission Me ↗
+                    </a>
+                </div>
+
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div class="commission-slideshow relative w-full max-w-[450px] aspect-[4/5] border-8 border-black rounded-3xl overflow-hidden shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-white mx-auto">
+                        <img src="../assets/art/mockupvendimia.webp" alt="Vendimia Mockup" loading="lazy">
+                        <img src="../assets/art/mockupsolefest.webp" alt="Solefest Mockup" loading="lazy">
+                        <img src="../assets/art/mockupbunda.webp" alt="Bunda Mockup" loading="lazy">
+                        <img src="../assets/art/mockupmenina.webp" alt="Menina Mockup" loading="lazy">
+                        <img src="../assets/art/mockupouioui.webp" alt="Oui Oui Mockup" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="relative pt-16 pb-28 px-6 bg-[#1C1C1C] text-center border-t-8 border-black overflow-hidden z-20">
+            <p class="font-mono text-white/50 font-bold text-xs md:text-sm tracking-widest uppercase relative z-10">© 2026 BY JOHANA DÁVILA — YOYI . THE STUDIO</p>
+            <div id="eyeball-buddy-container" class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none"></div>
+        </footer>
+
+        <div id="art-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#1C1C1C]/95 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300 p-8 cursor-pointer">
+            <img id="overlay-img" src="" alt="Enlarged Art" class="hidden max-w-full max-h-[75vh] object-contain border-4 border-black shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rounded-2xl bg-white">
+            <video id="overlay-video" src="" autoplay loop muted playsinline class="hidden max-w-full max-h-[75vh] object-contain border-4 border-black shadow-[16px_16px_0px_0px_rgba(0,0,0,1)] rounded-2xl bg-white"></video>
+            <p id="overlay-title" class="font-display text-2xl md:text-4xl text-yoyi-yellow mt-10 uppercase tracking-widest text-center drop-shadow-lg"></p>
+            <p class="font-mono text-sm text-white/40 mt-4 tracking-widest uppercase">(Click anywhere to close)</p>
+        </div>
+
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

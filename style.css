@@ -1,0 +1,935 @@
+/* =========================================
+   FIX GLOBAL: SCROLLBARS Y DESBORDAMIENTO
+   ========================================= */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 1024px) {
+
+    /* Elimina la barra de scroll visual en móviles/tablets */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    * {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* =========================================
+    1. TIPOGRAFÍAS LOCALES 
+   ========================================= */
+@font-face {
+    font-family: 'ArchivoBlack';
+    src: url('assets/tipografias/ArchivoBlack-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DMMono';
+    src: url('assets/tipografias/DMMono-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================================
+    2. COLORES OFICIALES YOYI BRAND GUIDE
+   ========================================= */
+:root {
+    --primary-bg: #FFF8F0;
+    --yoyi-yellow: #F6C445;
+    --yoyi-green: #538F50;
+    --yoyi-dark: #1C1C1C;
+    --yoyi-pink: #F4939D;
+    --yoyi-blue: #7DC3D1;
+}
+
+.text-yoyi-green {
+    color: var(--yoyi-green) !important;
+}
+
+.text-yoyi-yellow {
+    color: var(--yoyi-yellow) !important;
+}
+
+.text-yoyi-blue {
+    color: var(--yoyi-blue) !important;
+}
+
+.text-yoyi-pink {
+    color: var(--yoyi-pink) !important;
+}
+
+.text-black {
+    color: #1C1C1C !important;
+}
+
+.text-white {
+    color: #FFFFFF !important;
+}
+
+/* =========================================
+    3. CONFIGURACIÓN BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DMMono', monospace;
+    background-color: var(--yoyi-dark);
+    color: white;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+    font-family: 'ArchivoBlack', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    color: white;
+}
+
+/* =========================================
+    4. NAVEGACIÓN "PILL"
+   ========================================= */
+#app-wrapper #navbar {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 100 !important;
+    background: transparent !important;
+    padding: 20px;
+    transform: none !important;
+    transition: none !important;
+}
+
+#navbar .nav-container {
+    max-width: 95%;
+    margin: 0 auto;
+    background-color: #FFF8F0 !important;
+    padding: 18px 40px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 4px solid #1C1C1C !important;
+    box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 1) !important;
+    pointer-events: auto;
+}
+
+.logo-pop {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: block;
+}
+
+.logo-pop:hover {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.nav-pill {
+    font-family: 'DMMono', monospace !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1C1C1C !important;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-pill:hover {
+    background-color: var(--yoyi-yellow);
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+.btn-contacto {
+    background-color: var(--yoyi-yellow) !important;
+    color: var(--yoyi-dark) !important;
+    border: 3px solid #1C1C1C;
+}
+
+.btn-contacto:hover {
+    background-color: var(--yoyi-dark) !important;
+    color: var(--yoyi-yellow) !important;
+}
+
+/* =========================================
+    5. ANIMACIONES (SHAPES Y BLOB)
+   ========================================= */
+.bg-shape {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(4px);
+    opacity: 0.7;
+    will-change: transform;
+}
+
+@keyframes wander1 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(150px, -80px) rotate(90deg);
+    }
+
+    66% {
+        transform: translate(-80px, 120px) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes wander2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(-120px, 100px) rotate(-120deg);
+    }
+
+    70% {
+        transform: translate(60px, -150px) rotate(-240deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(-360deg);
+    }
+}
+
+@keyframes wander3 {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(-60px, -40px) scale(0.8);
+    }
+}
+
+.wander-slow {
+    animation: wander1 12s linear infinite;
+}
+
+.wander-medium {
+    animation: wander2 8s linear infinite;
+}
+
+.wander-fast {
+    animation: wander3 5s ease-in-out infinite alternate;
+}
+
+@keyframes blobMorph {
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+        transform: translateY(-20px) scale(1.1);
+    }
+}
+
+/* =========================================
+   ANIMACIÓN TIRA GRÁFICA ONDULADA (RESPONSIVA)
+   ========================================= */
+.wavy-container {
+    width: 100%;
+    height: 80px;
+    /* Mitad de tamaño en móvil */
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 40;
+    margin-top: -20px;
+    margin-bottom: -45px;
+}
+
+.wavy-svg {
+    position: absolute;
+    top: 50%;
+    left: -25px;
+    /* Ajuste proporcional */ 
+    transform-origin: left center;
+    transform: scale(0.5) translateY(-50%);
+    /* Escala al 50% mágicamente en móvil */
+    width: 6050px;
+    height: 160px;
+    /* Se mantiene la base matemática original */
+    pointer-events: none;
+}
+
+/* =========================================
+   2. VISTA EXCLUSIVA MÓVIL (Hasta 767px)
+   ========================================= */
+@media (max-width: 767px) {
+    .wavy-container {
+        height: 155px; /* Reduce el marco a la mitad */
+        
+        /* AQUÍ PUEDES JUGAR CON ESTOS NÚMEROS A TU GUSTO */
+        margin-top: -40px;     /* Sube o baja la tira respecto a la sección negra */
+        margin-bottom: -30px;  /* Sube o baja la sección clara de abajo */
+    } 
+
+    .wavy-svg {
+        /* Encogemos el SVG a la mitad (scale 0.5) para que no se corte feo */
+        left: -25px; 
+        transform-origin: left center;
+        transform: scale(0.5) translateY(-50%); 
+        
+        /* Mantenemos el height original interno para que no se deforme al escalar */
+        height: 160px; 
+    }
+}
+
+@media (min-width: 768px) {
+    .wavy-container {
+        height: 160px;
+        /* Tamaño original en tablet y desktop */
+        margin-top: -40px;
+        margin-bottom: -90px;
+    }
+
+    .wavy-svg {
+        left: -50px;
+        transform: scale(1) translateY(-50%);
+    }
+}
+
+/* =========================================
+    6. UTILIDADES Y CARDS DE ABOUT
+   ========================================= */
+#lets-talk h2 span {
+    color: var(--yoyi-dark) !important;
+}
+
+#lets-talk .btn-primary {
+    color: white;
+    background-color: var(--yoyi-dark);
+    border: 4px solid black;
+}
+
+#lets-talk .btn-primary:hover {
+    background-color: white;
+    color: black;
+}
+
+.video-caption {
+    font-family: 'DMMono', monospace;
+    font-size: 0.8rem;
+    color: white;
+    opacity: 0.6;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sortable-ghost {
+    opacity: 0.4;
+    transform: scale(0.95);
+    background-color: #e5e7eb !important;
+    border: 4px dashed #1C1C1C !important;
+}
+
+.sortable-drag {
+    cursor: grabbing !important;
+    box-shadow: 16px 16px 0px 0px rgba(0, 0, 0, 1) !important;
+    transform: scale(1.05) rotate(2deg) !important;
+}
+
+.about-card {
+    background-color: #f9f9f9;
+    border: 3px solid #1C1C1C;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.about-card__tag {
+    display: inline-block;
+    align-self: flex-start;
+    color: white;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 16px;
+    border-radius: 50px;
+    border: 2px solid #1C1C1C;
+}
+
+.about-text {
+    font-family: 'DMMono', monospace;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #1C1C1C;
+}
+
+.about-text--lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.about-text--center {
+    text-align: left;
+    max-width: 780px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+}
+
+.about-quote {
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 1.1rem;
+    color: #1C1C1C;
+    border-left: 5px solid var(--yoyi-yellow);
+    padding-left: 20px;
+    margin-top: 8px;
+    font-style: italic;
+}
+
+/* =========================================
+    ESTILOS INSIDE YOYI'S MIND
+   ========================================= */
+.mind-container {
+    perspective: 1500px;
+    height: 850px;
+    margin-top: 140px;
+}
+
+#yoyi-head-trigger img[alt="Yoyi Base"] {
+    width: 400px;
+    position: relative;
+    z-index: 50;
+}
+
+#head-lid {
+    width: 400px;
+    z-index: 60;
+    transform-origin: 65% 37%;
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1.3);
+}
+
+#yoyi-head-trigger.is-open #head-lid {
+    transform: rotate(50deg);
+}
+
+.mind-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: 40;
+    transition: all 0.9s cubic-bezier(0.34, 1.56, 0.100, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mind-item img {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.mind-item .img-large {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+.mind-item .item-title {
+    background-color: var(--yoyi-yellow);
+    color: #1C1C1C;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 0.92rem;
+    padding: 8px 18px;
+    border: 3px solid #1C1C1C;
+    border-radius: 50px;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.mind-item.active .item-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatingMind {
+
+    0%,
+    100% {
+        transform: translate(var(--target-x), var(--target-y)) translateY(0px);
+    }
+
+    50% {
+        transform: translate(var(--target-x), var(--target-y)) translateY(-25px);
+    }
+}
+
+.mind-item.active {
+    opacity: 1;
+    z-index: 70;
+    animation: floatingMind 4s ease-in-out infinite;
+}
+
+.click-me-label {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--yoyi-pink);
+    color: #1C1C1C;
+    font-family: 'ArchivoBlack', sans-serif;
+    font-size: 2rem;
+    padding: 8px 20px;
+    border: 3px solid #1C1C1C;
+    border-radius: 50px;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    animation: bounceTip 1.8s ease-in-out infinite;
+    z-index: 80;
+}
+
+.click-me-label::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #1C1C1C;
+}
+
+@keyframes bounceTip {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-8px);
+    }
+}
+
+/* =========================================
+    7. OTROS (FOOTER Y ANIMACIONES VARIAS)
+   ========================================= */
+.footer-logo {
+    height: 80px;
+    width: auto;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+#contact {
+    position: relative;
+    overflow: hidden;
+}
+
+#eyeball-buddy-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    pointer-events: none;
+}
+
+.branding-float {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.bombin-shape {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    animation: float-beat 5s ease-in-out infinite;
+}
+
+@keyframes float-beat {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.15) rotate(5deg);
+    }
+}
+
+.ifi-shape {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(5px);
+    animation: music-vibe 3s ease-in-out infinite;
+}
+
+.ifi-shape.fast {
+    animation-duration: 1.8s;
+}
+
+.ifi-shape.slow {
+    animation-duration: 4.5s;
+}
+
+.ifi-shape.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.ifi-shape.delay-2 {
+    animation-delay: 1.1s;
+}
+
+.ifi-shape.delay-3 {
+    animation-delay: 2.4s;
+}
+
+@keyframes music-vibe {
+    0% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.3;
+    }
+
+    15% {
+        transform: translateY(-5px) scale(1.25) rotate(3deg);
+        opacity: 0.7;
+    }
+
+    30% {
+        transform: translateY(-10px) scale(0.95) rotate(-2deg);
+        opacity: 0.4;
+    }
+
+    45% {
+        transform: translateY(-15px) scale(1.3) rotate(5deg);
+        opacity: 0.8;
+    }
+
+    65% {
+        transform: translateY(-10px) scale(1.05) rotate(-1deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(0px) scale(1) rotate(0deg);
+        opacity: 0.3;
+    }
+}
+
+.mockup-slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 3/4;
+    margin: 0 auto;
+    border: 6px solid black;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #1C1C1C;
+    box-shadow: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.mockup-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    animation: slide-crossfade 10s infinite;
+}
+
+.mockup-slideshow img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.mockup-slideshow img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.mockup-slideshow img:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.mockup-slideshow img:nth-child(4) {
+    animation-delay: 6s;
+}
+
+.mockup-slideshow img:nth-child(5) {
+    animation-delay: 8s;
+}
+
+@keyframes slide-crossfade {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.animate-scroll-left {
+    animation: scrollLeft 20s linear infinite;
+}
+
+.animate-scroll-right {
+    animation: scrollRight 20s linear infinite;
+}
+
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scrollRight {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.yoyi-blob {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(60px);
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: yoyi-float 12s ease-in-out infinite alternate;
+}
+
+.yoyi-blob.fast {
+    animation-duration: 8s;
+}
+
+.yoyi-blob.slow {
+    animation-duration: 16s;
+}
+
+.yoyi-blob.reverse {
+    animation-direction: alternate-reverse;
+}
+
+@keyframes yoyi-float {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px, -60px) scale(1.15);
+    }
+
+    100% {
+        transform: translate(-30px, 40px) scale(0.85);
+    }
+}
+
+@media (max-width: 768px) {
+    #eyeball-buddy-container {
+        transform: translateX(-50%) scale(0.8);
+        transform-origin: bottom center;
+    }
+}
+
+.commission-slideshow img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    opacity: 0;
+    animation: slide-crossfade 10s infinite;
+}
+
+.commission-slideshow img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.commission-slideshow img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.commission-slideshow img:nth-child(3) {
+    animation-delay: 4s;
+}
+
+.commission-slideshow img:nth-child(4) {
+    animation-delay: 6s;
+}
+
+.commission-slideshow img:nth-child(5) {
+    animation-delay: 8s;
+}
+
+/* =========================================
+   ANIMACIÓN WIGGLE (THINGS THAT MAKE ME, ME)
+   ========================================= */
+@keyframes wiggle-me {
+    0%, 100% { transform: rotate(-4deg) scale(1); }
+    50% { transform: rotate(4deg) scale(1.08); }
+}
+
+.animate-wiggle {
+    display: inline-block;
+    animation: wiggle-me 1.8s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* =========================================
+    8. BREAKPOINTS Y MENU MOVIL FULLSCREEN 
+   ========================================= */
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999 !important;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: var(--yoyi-dark) !important;
+    color: white !important;
+    border: none;
+    box-shadow: none;
+    overflow-y: auto;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+@media (min-width: 1024px) {
+
+    #mobileMenuBtn,
+    .mobile-menu {
+        display: none !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .nav-container .hidden.md\:flex {
+        display: none !important;
+    }
+}
+
+.about-container {
+    grid-template-areas:
+        "name"
+        "photo"
+        "intro"
+        "strategy"
+        "tech"
+        "footer";
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+/* Scrollbars Desktop */
+@media (min-width: 1025px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--yoyi-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--yoyi-pink);
+        border-radius: 10px;
+    }
+}
