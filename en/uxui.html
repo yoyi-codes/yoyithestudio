@@ -25,7 +25,8 @@
     <!-- Pre-carga de tipografías críticas -->
     <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
         crossorigin="anonymous">
-    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
 
     <link rel="icon" type="image/webp" href="../assets/branding/favicon-32x32.webp">
     <!-- LIBRERÍA P5.JS PARA EL EYEBALL BUDDY -->
@@ -48,10 +49,14 @@
 
                     <!-- Language Switcher (Desktop) -->
                     <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
-                        <button onclick="switchLanguage('en')" class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden" aria-label="English Website">
+                        <button onclick="switchLanguage('en')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="English Website">
                             <img src="https://flagcdn.com/w40/us.png" alt="English" class="w-full h-full object-cover">
                         </button>
-                        <button onclick="switchLanguage('es')" class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden" aria-label="Spanish Website">
+                        <button onclick="switchLanguage('es')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="Spanish Website">
                             <img src="https://flagcdn.com/w40/es.png" alt="Spanish" class="w-full h-full object-cover">
                         </button>
                     </div>
@@ -92,12 +97,14 @@
 
             <!-- Language Switcher (Mobile) -->
             <div class="flex items-center gap-6 mt-6 pt-6 border-t-2 border-white/10 w-full justify-center">
-                <button onclick="switchLanguage('en')" class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                <button onclick="switchLanguage('en')"
+                    class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
                     aria-label="English Website">
                     <span
                         class="w-10 h-10 rounded-full border-2 border-white bg-[#1C1C1C] text-white flex items-center justify-center text-lg">EN</span>
                 </button>
-                <button onclick="switchLanguage('es')" class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                <button onclick="switchLanguage('es')"
+                    class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
                     aria-label="Spanish Website">
                     <span
                         class="w-10 h-10 rounded-full border-2 border-white/50 bg-[#1C1C1C] text-white flex items-center justify-center text-lg">ES</span>
@@ -115,7 +122,7 @@
                     <span class="hidden lg:block">Web & App <span class="text-yoyi-green">Design</span></span>
                 </h1>
                 <p class="font-mono text-sm sm:text-base lg:text-xl text-black/80 max-w-2xl leading-relaxed">
-                    Responsive web ecosystems, mobile application designs and interactive prototypes focused on user
+                    Responsive websites, mobile application designs and interactive prototypes focused on user
                     experience.
                 </p>
                 <div class="font-mono text-[10px] sm:text-xs text-black/40 mt-6 uppercase tracking-widest">
@@ -322,8 +329,16 @@
                     </a>
                 </div>
             </article>
-
+            <!-- MENSAJE FINAL "OBVIO" -->
+            <div class="mt-16 md:mt-24 lg:mt-32 text-center reveal w-full flex flex-col items-center">
+                <h2
+                    class="font-display text-3xl md:text-5xl lg:text-6xl text-white uppercase leading-tight tracking-tight max-w-4xl">
+                    Oh, and yes... <span class="text-yoyi-pink">this portfolio website</span> was designed and coded by
+                    me too ✦
+                </h2>
+            </div>
         </main>
+
 
         <!-- FOOTER PARA PÁGINAS SECUNDARIAS (Fondo Amarillo) -->
         <footer class="relative pt-16 pb-28 px-6 bg-[#F6C445] text-center border-t-8 border-black overflow-hidden z-20">
