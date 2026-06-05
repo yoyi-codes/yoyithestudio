@@ -331,83 +331,144 @@
             </div>
         </section>
 
-        <section id="about" class="py-16 md:py-24 px-6 bg-white" aria-labelledby="about-heading">
-            <div class="max-w-7xl mx-auto">
-                <div class="mb-10 lg:mb-12 reveal text-center md:text-left">
-                    <h2 id="about-heading" class="font-display text-4xl md:text-5xl lg:text-7xl text-black">
+        <section id="about" class="py-16 md:py-24 lg:py-32 px-6 bg-white overflow-hidden relative">
+            
+            <div class="block lg:hidden max-w-7xl mx-auto">
+                <div class="mb-10 reveal text-center md:text-left">
+                    <h2 class="font-display text-4xl md:text-5xl text-black">
                         Who's <span style="color: var(--yoyi-pink);">Yoyi</span>?
                     </h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-12 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="reveal flex justify-center md:justify-start">
-                        <figure
-                            class="relative w-full max-w-[280px] md:max-w-none rounded-3xl overflow-hidden aspect-square border-4 border-black group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] lg:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
-                            style="background-color: var(--yoyi-blue);">
+                        <figure class="relative w-full max-w-[280px] md:max-w-none rounded-3xl overflow-hidden aspect-square border-4 border-black group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" style="background-color: var(--yoyi-blue);">
                             <picture>
-                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
-                                    loading="lazy" width="800" height="800">
+                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100" loading="lazy">
                             </picture>
-                            <span
-                                class="absolute bottom-4 right-4 md:bottom-8 md:right-8 inline-block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold bg-[#F6C445] text-black border-2 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal">✺
-                                MULTIMEDIA DESIGNER</span>
+                            <span class="absolute bottom-4 right-4 md:bottom-8 md:right-8 inline-block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold bg-[#F6C445] text-black border-2 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal">✺ MULTIMEDIA DESIGNER</span>
                         </figure>
                     </div>
 
-                    <div class="reveal flex flex-col gap-4 lg:gap-6 justify-center text-center md:text-left">
+                    <div class="reveal flex flex-col gap-4 justify-center text-center md:text-left">
+                        
                         <div class="block md:hidden">
                             <p class="about-text font-bold text-base mb-4">Hi, I’m YOYI.</p>
-                            <p class="about-text text-sm mb-4">I’m a digital artist and designer. Originally from
-                                Caracas and based in Buenos Aires, I’ve spent the last six years exploring the
-                                convergence of art and design.</p>
-                            <p class="about-text text-sm mb-4">My journey began with analog sketches, evolving into a
-                                practice where I now use motion, sound, and interactive code to make concepts feel
-                                alive.</p>
-                            <p class="about-text text-sm italic font-bold">I’m looking to partner on projects that
-                                celebrate color, texture, and artistic expression. My focus is the intersection of art,
-                                music, fashion, and audiovisual media. <span class="block mt-2 text-[10px]">(please
-                                    check my desktop view — it took me like 1 month with no sleep, coding till dawn, it
-                                    is worth it!)</span></p>
+                            <p class="about-text text-sm mb-4">I’m a digital artist and designer. Originally from Caracas and based in Buenos Aires, I’ve spent the last six years exploring the convergence of art and design.</p>
+                            <p class="about-text text-sm mb-4">My journey began with analog sketches, evolving into a practice where I now use motion, sound, and interactive code to make concepts feel alive.</p>
+                            <p class="about-text text-sm italic font-bold">I’m looking to partner on projects that celebrate color, texture, and artistic expression. My focus is the intersection of art, music, fashion, and audiovisual media. <span class="block mt-2 text-[10px] text-yoyi-pink">(please check my desktop view — it took me like 1 month with no sleep, coding till dawn, it is worth it!)</span></p>
                         </div>
 
-                        <div class="hidden md:block lg:hidden">
+                        <div class="hidden md:block">
                             <p class="about-text font-bold text-lg mb-4">Hi, I’m Johana, known as YOYI.</p>
-                            <p class="about-text text-base mb-4">I’m a digital artist and designer with six years of
-                                experience. My journey began with analog sketches and hand-drawn illustrations, evolving
-                                into a career where I now use motion, sound, and interactive code to bring ideas to
-                                life.</p>
-                            <p class="about-text text-base mb-4">Originally from Caracas, I’ve made Buenos Aires my home
-                                for the past eight years. I’m currently finishing my degree in Multimedia Design at
-                                Escuela Da Vinci, where I’ve combined my self-taught roots with formal technical
-                                training.</p>
-                            <p class="about-text text-base font-bold">Today, I focus on projects that prioritize color,
-                                texture, and interactive expression. My goal is to keep creating at the crossroads of
-                                art, music, fashion, and audiovisual media putting my heart into every project I take
-                                on.</p>
+                            <p class="about-text text-base mb-4">I’m a digital artist and designer with six years of experience. My journey began with analog sketches and hand-drawn illustrations, evolving into a career where I now use motion, sound, and interactive code to bring ideas to life.</p>
+                            <p class="about-text text-base mb-4">Originally from Caracas, I’ve made Buenos Aires my home for the past eight years. I’m currently finishing my degree in Multimedia Design at Escuela Da Vinci, where I’ve combined my self-taught roots with formal technical training.</p>
+                            <p class="about-text text-base font-bold">Today, I focus on projects that prioritize color, texture, and interactive expression. My goal is to keep creating at the crossroads of art, music, fashion, and audiovisual media putting my heart into every project I take on.</p>
                         </div>
-
-                        <div class="hidden lg:block">
-                            <p class="about-text font-bold text-xl mb-6">Hi, I’m Johana, but most people call me YOYI.
-                            </p>
-                            <p class="about-text text-lg mb-6">I moved to Buenos Aires eight years ago, and although I’m
-                                originally from Caracas, Venezuela, this city is now home. I’ve been working as a
-                                digital artist and designer for about six years, and my path has been anything but
-                                linear. It started with analog sketches and hand-drawn illustrations that I would scan
-                                and digitize. By combining self-taught experimentation with mentorship and short
-                                courses, I took my first steps doing commissions and creating my own merch—which taught
-                                me the value of seeing my art come to life in the physical world.</p>
-                            <p class="about-text text-lg mb-6">Over time, my curiosity pulled me deeper into design. I
-                                am currently finishing my degree in Multimedia Design at Escuela Da Vinci, where I’ve
-                                been able to formalize and refine the skills I spent years building on my own.</p>
-                            <p class="about-text text-lg">For me, it’s all about thinking transmedia. I care about how
-                                an idea scales and functions across different platforms. I always look at the big
-                                picture to ensure every project from marketing strategies to visual ecosystems is
-                                functional and built to grow, not just look pretty.</p>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
+
+            <div class="hidden lg:block max-w-[1300px] mx-auto relative">
+                
+    <div class="grid grid-cols-12 gap-6 items-end mb-24 relative">
+        <div class="col-span-8 relative z-20 reveal">
+            <!-- Titular con jerarquía editorial -->
+            <h2 class="font-display text-black uppercase flex flex-col tracking-tighter">
+                <!-- "HI," en tamaño gigante -->
+                <span class="text-[10rem] lg:text-[13rem] leading-none mb-2">
+                    HI,
+                </span>
+                <!-- "I'M YOYI!" con tamaño en contraste -->
+                <span class="text-6xl lg:text-[7rem] leading-[0.85]">
+                    I'M <span class="text-yoyi-pink relative inline-block">
+                        YOYI!
+                        <svg class="absolute -top-8 -right-20 w-16 h-16 text-yoyi-yellow animate-wiggle" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M50,10 Q50,40 90,50 Q50,60 50,90 Q50,60 10,50 Q50,40 50,10 Z" />
+                            <circle cx="80" cy="20" r="2" fill="currentColor" />
+                            <circle cx="20" cy="80" r="3" fill="currentColor" />
+                        </svg>
+                    </span>
+                </span>
+            </h2>
+            
+            <div class="flex items-center gap-4 mt-12 ml-2">
+                <div class="w-20 border-t-4 border-black"></div>
+                <p class="font-mono text-sm uppercase tracking-widest font-bold">
+                    Digital Artist & Multimedia Designer
+                </p>
+            </div>
+        </div>
+
+        <div class="col-span-4 col-start-9 mt-[-120px] relative z-10 reveal">
+            <figure class="relative w-full max-w-none rounded-[2rem] overflow-hidden aspect-[3/4] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#7DC3D1] group">
+                <picture>
+                    <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100" loading="lazy">
+                </picture>
+                <span class="absolute bottom-6 right-6 inline-block px-4 py-2 rounded-full text-xs font-bold bg-[#F6C445] text-black border-4 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal rotate-[-5deg]">
+                    ✺ MULTIMEDIA DESIGNER
+                </span>
+            </figure>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-16 items-start reveal">
+        <div class="col-span-5 flex flex-col gap-8">
+            <p class="about-text text-2xl font-bold leading-snug">
+                I'm a digital artist and multimedia designer, born in Caracas, Venezuela, and currently based in Buenos Aires. I've been working on creative projects for over 6 years while finishing my degree in Multimedia Design at 
+                <span class="relative inline-block whitespace-nowrap">
+                    <span class="absolute -inset-1 bg-yoyi-yellow -skew-y-2 -z-10 rounded-sm opacity-80"></span>
+                    <strong class="relative text-black">Escuela Da Vinci</strong>
+                </span>.
+            </p>
+            <p class="about-text text-lg">
+                During this time, I’ve worked on illustration, visual identity, social media content, streaming platforms, music releases, animation, and video editing. I love jumping between disciplines because every project lets me learn something new and find different ways to communicate an idea.
+            </p>
+            
+            <div class="relative inline-block self-start mt-2 rotate-[3deg] bg-[#7DC3D1] text-black font-mono text-base px-6 py-3 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform hover:rotate-0">
+                <em>(Or maybe I'm just a nerd with way too many interests)</em> ✦
+                <svg class="absolute -top-12 -right-16 w-20 h-20 text-yoyi-pink" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10,90 Q40,20 90,40 M75,20 L90,40 L65,50" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="col-span-7 flex flex-col gap-10">
+            <blockquote class="font-display text-6xl text-yoyi-pink leading-none border-t-8 border-black pt-6 uppercase relative">
+                "EVEN THOUGH MY WORK IS FULL OF COLOR, PLAY, AND EXPERIMENTATION, I TAKE EVERYTHING I DO VERY SERIOUSLY."
+            </blockquote>
+            
+            <div class="grid grid-cols-2 gap-10">
+                <div class="flex flex-col gap-6 relative">
+                    <p class="about-text text-lg">
+                        I'm a <strong>highly curious person</strong>. I'm drawn to art, music, design, fashion, illustration, books, and storytelling in all its forms. I truly enjoy researching, observing, and connecting references.
+                    </p>
+                    <p class="about-text text-lg">
+                        I like to understand the why behind every decision and tackle new challenges. If I don't know how to do something today, I'll probably be researching it by tomorrow.
+                    </p>
+                </div>
+                
+                <div class="bg-[#FFF8F0] border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
+                    <p class="about-text text-xl font-bold mb-6">
+                        I love collaborating with people who have ambitious projects, different perspectives, and a drive to build something 
+                        <span class="relative inline-block">
+                            authentic
+                            <svg class="absolute -bottom-2 left-0 w-full h-3 text-yoyi-green" viewBox="0 0 100 20" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                                <path d="M0,15 Q12,5 25,15 T50,15 T75,15 T100,15" />
+                            </svg>
+                        </span>.
+                    </p>
+                    <div class="pt-6 border-t-4 border-black/10">
+                        <p class="about-text text-sm font-mono leading-relaxed">
+                            <span class="text-yoyi-pink font-bold text-base">PS:</span> If you made it this far, thanks for stopping by my site and taking the time to see what I do, it means more than you'd imagine!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </section>
 
         <section id="mind-section" class="hidden lg:block pt-32 pb-16 px-6 bg-[#1C1C1C] overflow-hidden relative">

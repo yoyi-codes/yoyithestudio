@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portafolio de Diseño Web y App por Johana Dávila (YOYI). Explora diseños de sitios web responsivos, aplicaciones móviles y prototipos interactivos.">
+    <title>Diseño Web & App | YOYI.THE STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/webp" href="../assets/branding/favicon-32x32.webp">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="keywords"
+        content="Diseño UX/UI Argentina, Diseño Web Argentina, Diseño de Apps, Prototipado Web, Experiencia de Usuario, Interfaz de Usuario, Diseño Web Responsivo, HTML/CSS, JavaScript, Portafolio Digital">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Diseño Web & App | YOYI.THE STUDIO">
+    <meta property="og:description"
+        content="Diseño de sitios web, aplicaciones móviles y prototipos interactivos centrados en la experiencia de usuario.">
+    <meta property="og:url" content="https://www.yoyithestudio.com/es/uxui.html">
+    <meta property="og:image" content="https://www.yoyithestudio.com/assets/branding/yoyipatron-seo.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Johana Dávila",
+            "jobTitle": "Diseñadora Multimedial y Desarrolladora Web",
+            "url": "https://www.yoyithestudio.com/es/uxui.html"
+        }
+    </script>
+
+    <!-- Pre-carga de tipografías críticas -->
+    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+
+    <!-- LIBRERÍA P5.JS PARA EL EYEBALL BUDDY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body class="h-full bg-[#1C1C1C]">
+    <div id="app-wrapper" class="relative w-full h-full overflow-auto overflow-x-hidden">
+
+        <nav id="navbar">
+            <div
+                class="nav-container max-w-7xl mx-auto flex justify-between items-center bg-[#FFF8F0] rounded-full px-6 py-3 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <a href="index.html" class="logo-pop cursor-pointer">
+                    <img src="../assets/branding/yoyi-color.webp" alt="YOYI Logo" class="h-10 md:h-12 w-auto"
+                        loading="eager">
+                </a>
+
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="index.html#projects" class="nav-pill">← Volver al inicio</a>
+
+                    <!-- Language Switcher (Desktop) -->
+                    <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
+                        <button onclick="switchLanguage('en')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="English Website">
+                            <img src="https://flagcdn.com/w40/us.png" alt="English" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="switchLanguage('es')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="Spanish Website">
+                            <img src="https://flagcdn.com/w40/es.png" alt="Español" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobileMenu"
+            class="mobile-menu fixed inset-0 z-[100] p-8 flex flex-col items-center justify-center gap-6 bg-[#1C1C1C] text-white">
+            <button id="closeMobileMenu"
+                class="absolute top-6 right-6 p-2 text-white hover:text-yoyi-pink transition-colors">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <a href="index.html" class="mobile-nav-link font-display text-2xl text-white mb-4">← Volver al inicio</a>
+            <div class="w-16 border-t-2 border-white/20 my-2"></div>
+
+            <a href="art.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-green hover:scale-105 transition-transform uppercase text-center">Arte
+                e Ilustración</a>
+            <a href="audiovisual.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-yellow hover:scale-105 transition-transform uppercase text-center">Animación
+                y Edición</a>
+            <a href="branding.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-pink hover:scale-105 transition-transform uppercase text-center">Identidad
+                de Marca</a>
+            <a href="uxui.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-blue hover:scale-105 transition-transform uppercase text-center">Diseño
+                Web & App</a>
+
+            <!-- Language Switcher (Mobile) -->
+            <div class="flex items-center gap-6 mt-6 pt-6 border-t-2 border-white/10 w-full justify-center">
+                <button onclick="switchLanguage('en')"
+                    class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 hover:scale-105 transition-transform"
+                    aria-label="English Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white/50 bg-[#1C1C1C] text-white flex items-center justify-center text-lg">EN</span>
+                </button>
+                <button onclick="switchLanguage('es')"
+                    class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                    aria-label="Spanish Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white bg-[#1C1C1C] text-white flex items-center justify-center text-lg">ES</span>
+                </button>
+            </div>
+        </div>
+
+        <header class="pt-40 md:pt-48 pb-16 md:pb-24 px-6 bg-white border-b-8 border-black text-black">
+            <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+                <h1
+                    class="font-display text-5xl sm:text-6xl lg:text-7xl mb-4 lg:mb-6 text-black leading-none tracking-tighter w-full">
+                    <!-- Mobile: UX/UI -->
+                    <span class="block lg:hidden text-yoyi-green uppercase">UX/UI</span>
+                    <!-- Desktop: Web & App Design -->
+                    <span class="hidden lg:block">Diseño Web & <span class="text-yoyi-green">App</span></span>
+                </h1>
+                <p class="font-mono text-sm sm:text-base lg:text-xl text-black/80 max-w-2xl leading-relaxed">
+                    Diseño de sitios web, aplicaciones móviles y prototipos interactivos centrados en la experiencia de usuario.
+                </p>
+                <div class="font-mono text-[10px] sm:text-xs text-black/40 mt-6 uppercase tracking-widest">
+                    Por Johana Dávila ✺
+                </div>
+            </div>
+        </header>
+
+        <main class="py-24 px-6 max-w-7xl mx-auto min-h-screen relative flex flex-col gap-20 md:gap-32">
+
+            <!-- IFI MOBILE APP -->
+            <article class="flex flex-col lg:flex-row items-center gap-12 reveal">
+                <div class="w-full lg:w-7/12 flex flex-wrap items-end justify-center gap-4 lg:gap-8">
+                    <div
+                        class="relative w-full max-w-[450px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#1C1C1C] border-8 border-black rounded-xl overflow-hidden flex flex-col">
+                        <div
+                            class="w-full h-6 border-b-4 border-black bg-[#FFF8F0] flex items-center px-3 gap-2 flex-shrink-0">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F4939D] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F6C445] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#538F50] border-2 border-black"></div>
+                        </div>
+                        <div class="w-full aspect-video relative overflow-hidden bg-white">
+                            <video src="../assets/ux-ui/ifi-scroll.webm" autoplay loop muted playsinline
+                                class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+                    <div class="relative w-[140px] sm:w-[180px] flex-shrink-0 -ml-6 sm:-ml-12 z-10">
+                        <img src="../assets/ux-ui/indie-wireframe.webp" alt="IFI Mobile App Wireframe"
+                            class="w-full h-auto drop-shadow-[8px_8px_0px_rgba(0,0,0,1)] hover:-translate-y-2 transition-transform duration-300 cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-pink">IFI: App Móvil & Landing</h2>
+                    <p class="font-mono text-lg text-white/80 leading-relaxed mb-6">
+                        Caso de estudio que destaca el flujo de usuario para el lanzamiento de una plataforma para
+                        amantes de la música. El proyecto se enfoca en wireframes de alta fidelidad y prototipado visual
+                        para establecer un recorrido de usuario claro antes del desarrollo.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Diseño
+                            de Interfaz</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Prototipado
+                            de App</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Wireframes
+                            Mid & Hi-Fi</span>
+                    </div>
+                    <a href="branding.html"
+                        class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
+                        Ver Proyecto de Marca
+                    </a>
+                </div>
+            </article>
+
+            <!-- TAPED BA -->
+            <article class="flex flex-col lg:flex-row-reverse items-center gap-12 reveal">
+                <div class="w-full lg:w-7/12 flex flex-col items-center justify-center relative">
+                    <div
+                        class="relative w-[90%] max-w-[500px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#1C1C1C] border-8 border-black rounded-xl overflow-hidden flex flex-col mb-10 sm:mb-4">
+                        <div
+                            class="w-full h-6 border-b-4 border-black bg-[#FFF8F0] flex items-center px-3 gap-2 flex-shrink-0">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F4939D] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F6C445] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#538F50] border-2 border-black"></div>
+                        </div>
+                        <div class="w-full aspect-video relative overflow-hidden bg-white">
+                            <video src="../assets/ux-ui/home-taped-desktop.webm" autoplay loop muted playsinline
+                                class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex flex-col sm:flex-row items-center gap-10 sm:gap-8 sm:absolute sm:-bottom-10 lg:-left-4 z-10 w-full justify-center lg:justify-start">
+                        <div
+                            class="relative w-[180px] sm:w-[220px] aspect-[3/4] border-[10px] border-black rounded-[24px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white flex-shrink-0 pb-10">
+                            <div
+                                class="absolute bottom-2 left-1/2 -translate-x-1/2 w-6 h-6 border-[3px] border-black/20 rounded-full">
+                            </div>
+                            <div
+                                class="w-full h-full relative overflow-hidden border-b-[3px] border-black bg-[#1C1C1C]">
+                                <video src="../assets/ux-ui/home-tablet-taped.webm" autoplay loop muted playsinline
+                                    class="w-full h-full object-cover"></video>
+                            </div>
+                        </div>
+                        <div
+                            class="relative w-[120px] sm:w-[130px] aspect-[9/16] border-[8px] border-black rounded-[20px] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-white overflow-hidden flex-shrink-0">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-3 bg-black rounded-b-lg z-20">
+                            </div>
+                            <video src="../assets/ux-ui/home-mobile-taped.webm" autoplay loop muted playsinline
+                                class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-full lg:w-5/12 text-white lg:text-right mt-16 lg:mt-0 flex flex-col items-start lg:items-end">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-blue">TAPED BA</h2>
+                    <p class="font-mono text-lg text-white/80 leading-relaxed mb-6 text-left lg:text-right">
+                        Caso de estudio de diseño e implementación web responsiva para una marca de skateshop.
+                        Construido desde cero logrando unificar la identidad visual en las vistas de escritorio, tablet
+                        y móvil.
+                    </p>
+                    <div class="flex flex-wrap lg:justify-end gap-2 mb-8">
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Diseño
+                            Responsivo</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Implementación</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">HTML/CSS</span>
+                    </div>
+                    <a href="https://tapedba.netlify.app/" target="_blank"
+                      class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
+                        Ver Web
+                    </a>
+                </div>
+            </article>
+
+            <!-- DR LEMON TRIVIA -->
+            <article class="flex flex-col lg:flex-row items-center gap-12 reveal mt-12 lg:mt-0">
+                <div class="w-full lg:w-7/12 flex flex-wrap items-end justify-center gap-4 lg:gap-8">
+                    <div
+                        class="relative w-full max-w-[450px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#1C1C1C] border-8 border-black rounded-xl overflow-hidden flex flex-col">
+                        <div
+                            class="w-full h-6 border-b-4 border-black bg-[#FFF8F0] flex items-center px-3 gap-2 flex-shrink-0">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F4939D] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F6C445] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#538F50] border-2 border-black"></div>
+                        </div>
+                        <div class="w-full aspect-video relative overflow-hidden bg-white">
+                            <video src="../assets/ux-ui/drlemon-desktop.webm" autoplay loop muted playsinline
+                                class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+                    <div
+                        class="relative w-[140px] sm:w-[160px] aspect-[9/16] border-8 sm:border-[10px] border-black rounded-[24px] sm:rounded-[32px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white overflow-hidden flex-shrink-0 -ml-10 z-10">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-black rounded-b-xl z-20"></div>
+                        <video src="../assets/ux-ui/drlemon-mobile.webm" autoplay loop muted playsinline
+                            class="w-full h-full object-cover"></video>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-yellow">Dr. Lemon Trivia</h2>
+                    <p class="font-mono text-lg text-white/80 leading-relaxed mb-6">
+                        Una experiencia interactiva de preguntas y respuestas diseñada para una clase de guion y
+                        narrativa. Los usuarios responden preguntas relacionadas con la marca para ganar entradas al
+                        festival. Completada con animaciones y efectos de sonido.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Prototipado
+                            Web</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">HTML/CSS</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">JAVASCRIPT</span>
+                    </div>
+                    <a href="https://trivia-drlemon.netlify.app/" target="_blank"
+                       class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
+                        Jugar Trivia
+                    </a>
+                </div>
+            </article>
+
+            <!-- ATELIER CREATIVO -->
+            <article class="flex flex-col lg:flex-row-reverse items-center gap-12 reveal">
+                <div class="w-full lg:w-7/12 flex justify-center">
+                    <div
+                        class="relative w-full max-w-[550px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#1C1C1C] border-8 border-black rounded-xl overflow-hidden flex flex-col">
+                        <div
+                            class="w-full h-6 border-b-4 border-black bg-[#FFF8F0] flex items-center px-3 gap-2 flex-shrink-0">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F4939D] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#F6C445] border-2 border-black"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#538F50] border-2 border-black"></div>
+                        </div>
+                        <div class="w-full aspect-video relative overflow-hidden bg-white">
+                            <video src="../assets/ux-ui/atelier.webm" autoplay loop muted playsinline
+                                class="w-full h-full object-cover"></video>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-5/12 text-white lg:text-right flex flex-col items-start lg:items-end">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-green">Atelier Creativo D&J</h2>
+                    <p class="font-mono text-lg text-white/80 leading-relaxed mb-6 text-left lg:text-right">
+                        Una exhibición artística impulsada por código que reinterpreta una obra clásica a través de
+                        elementos web interactivos. Un caso de estudio de Diseño y Programación Web desarrollado para
+                        explorar el código creativo y el diseño computacional.
+                    </p>
+                    <div class="flex flex-wrap lg:justify-end gap-2 mb-8">
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Diseño
+                            de Interfaz</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">P5.JS</span>
+                        <span
+                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">HTML/CSS</span>
+                    </div>
+                    <a href="https://atelierdyj.netlify.app/" target="_blank"
+                        class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
+                        Ver Web
+                    </a>
+                </div>
+            </article>
+
+            <!-- MENSAJE FINAL "OBVIO" -->
+            <div class="mt-16 md:mt-24 lg:mt-32 text-center reveal w-full flex flex-col items-center">
+                <h2
+                    class="font-display text-3xl md:text-5xl lg:text-6xl text-white uppercase leading-tight tracking-tight max-w-4xl">
+                    Y obvio.. <span class="text-yoyi-pink">este portfolio web</span> también lo diseñé y lo programé yo
+                    ✦
+                </h2>
+            </div>
+
+        </main>
+
+        <!-- FOOTER PARA PÁGINAS SECUNDARIAS (Fondo Amarillo) -->
+        <footer class="relative pt-16 pb-28 px-6 bg-[#F6C445] text-center border-t-8 border-black overflow-hidden z-20">
+            <!-- Copyright centrado en negro -->
+            <p class="font-mono text-[#1C1C1C] font-bold text-xs md:text-sm tracking-widest uppercase relative z-10">©
+                2026 POR JOHANA DÁVILA — YOYI . THE STUDIO</p>
+
+            <!-- Contenedor del Eyeball Buddy de P5.js -->
+            <div id="eyeball-buddy-container"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none"></div>
+        </footer>
+    </div>
+
+    <!-- Script Global -->
+    <script src="../script.js"></script>
+</body>
+
+</html>

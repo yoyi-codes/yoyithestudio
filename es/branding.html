@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="es" class="h-full">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidad de Marca | YOYI.THE STUDIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <meta name="description"
+        content="Proyectos de identidad visual y branding creados por Johana Dávila (YOYI). Diseño de marcas con personalidad en Argentina.">
+    <meta name="keywords" content="Branding Argentina, Identidad Visual, Diseño de Marca, Diseñadora Multimedial">
+
+    <!-- Open Graph SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Identidad de Marca | YOYI.THE STUDIO">
+    <meta property="og:description"
+        content="Proyectos de identidad visual y diseño de marcas por Johana Dávila (YOYI).">
+    <meta property="og:url" content="https://www.yoyithestudio.com/es/branding.html">
+    <meta property="og:image" content="https://www.yoyithestudio.com/assets/branding/yoyipatron-seo.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Johana Dávila",
+            "jobTitle": "Diseñadora Multimedial",
+            "url": "https://www.yoyithestudio.com/es/branding.html"
+        }
+    </script>
+    <!-- Pre-carga de tipografías críticas -->
+    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+
+    <link rel="icon" type="image/png" href="../assets/branding/favicon-32x32.webp" sizes="32x32">
+    <!-- LIBRERÍA P5.JS PARA EL EYEBALL BUDDY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+</head>
+
+<body class="h-full bg-[#1C1C1C]">
+    <div id="app-wrapper" class="relative w-full h-full overflow-auto overflow-x-hidden">
+
+        <nav id="navbar">
+            <div
+                class="nav-container max-w-7xl mx-auto flex justify-between items-center bg-[#FFF8F0] rounded-full px-6 py-3 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <a href="index.html" class="logo-pop cursor-pointer">
+                    <img src="../assets/branding/yoyi-color.webp" alt="YOYI Logo" class="h-10 md:h-12 w-auto"
+                        loading="eager">
+                </a>
+
+                <!-- Language Switcher (Desktop) -->
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="index.html#projects" class="nav-pill">← Volver al inicio</a>
+
+                    <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
+                        <button onclick="switchLanguage('en')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="English Website">
+                            <img src="https://flagcdn.com/w40/us.png" alt="English" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="switchLanguage('es')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="Spanish Website">
+                            <img src="https://flagcdn.com/w40/es.png" alt="Español" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobileMenu"
+            class="mobile-menu fixed inset-0 z-[100] p-8 flex flex-col items-center justify-center gap-6 bg-[#1C1C1C] text-white">
+            <button id="closeMobileMenu"
+                class="absolute top-6 right-6 p-2 text-white hover:text-yoyi-pink transition-colors">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <a href="index.html" class="mobile-nav-link font-display text-2xl text-white mb-4">← Volver al inicio</a>
+            <div class="w-16 border-t-2 border-white/20 my-2"></div>
+
+            <a href="art.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-green hover:scale-105 transition-transform uppercase text-center">Arte
+                e Ilustración</a>
+            <a href="audiovisual.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-yellow hover:scale-105 transition-transform uppercase text-center">Animación
+                y Edición</a>
+            <a href="branding.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-pink hover:scale-105 transition-transform uppercase text-center">Identidad
+                de Marca</a>
+            <a href="uxui.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-blue hover:scale-105 transition-transform uppercase text-center">Diseño
+                Web & App</a>
+
+            <!-- Language Switcher (Mobile) -->
+            <div class="flex items-center gap-6 mt-6 pt-6 border-t-2 border-white/10 w-full justify-center">
+                <button onclick="switchLanguage('en')"
+                    class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 hover:scale-105 transition-transform"
+                    aria-label="English Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white/50 bg-[#1C1C1C] text-white flex items-center justify-center text-lg">EN</span>
+                </button>
+                <button onclick="switchLanguage('es')"
+                    class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                    aria-label="Spanish Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white bg-[#1C1C1C] text-white flex items-center justify-center text-lg">ES</span>
+                </button>
+            </div>
+        </div>
+
+        <header class="pt-40 md:pt-48 pb-16 md:pb-24 px-6 bg-white border-b-8 border-black text-black">
+            <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+                <h1
+                    class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 lg:mb-6 text-black leading-none tracking-tighter w-full">
+                    <!-- Mobile: BRANDING -->
+                    <span class="block lg:hidden text-yoyi-pink uppercase">Identidad de Marca</span>
+                    <!-- Desktop: branding -->
+                    <span class="hidden lg:block">Identidad de <span class="text-yoyi-pink">Marca</span></span>
+                </h1>
+                <p class="font-mono text-sm sm:text-base lg:text-xl text-black/80 max-w-2xl leading-relaxed">
+                    Marcas creadas desde cero: identidad visual, dirección creativa, sistemas gráficos y todo lo que ayuda a convertir una idea en una marca con carácter propio.
+                </p>
+                <div class="font-mono text-[10px] sm:text-xs text-black/40 mt-6 uppercase tracking-widest">
+                    Por Johana Dávila ✺
+                </div>
+            </div>
+        </header>
+
+        <main class="py-24 px-6 max-w-7xl mx-auto min-h-screen relative">
+            <!-- Grid de Proyectos -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-10">
+
+                <!-- PROYECTO 1: CACHUCHA (Visible en Mobile) -->
+                <div class="project-card-item group cursor-pointer flex flex-col" data-project="brand-1">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/cachucha/logooriginal.webp" alt="Cachucha Logo"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#F97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#F97316] transition-colors">
+                            CACHUCHA</p>
+                        <p class="font-mono text-sm text-white/60">Marca de headwear y accesorioss</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 2: BOMBIN.BA (Visible en Mobile) -->
+                <div class="project-card-item group cursor-pointer flex flex-col" data-project="brand-2">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/bombin/1portada-bombin.webp" alt="Bombin Cover"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#F6C445] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#F6C445] transition-colors">
+                            BOMBIN.BA</p>
+                        <p class="font-mono text-sm text-white/60">Marca de pastelería artesanal</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 3: IFI (Visible en Mobile) -->
+                <div class="project-card-item group cursor-pointer flex flex-col" data-project="brand-3">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/ifi/logo-ifi.webp" alt="IFI Logo"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#45ff5f] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#45ff5f] transition-colors">IFI</p>
+                        <p class="font-mono text-sm text-white/60">Branding de aplicación móvil</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 4: TAPED (Visible en Mobile) -->
+                <div class="project-card-item group cursor-pointer flex flex-col" data-project="brand-4">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/taped/logo-taped.webp" alt="Taped Logo"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#2563EB] transition-colors">TAPED
+                        </p>
+                        <p class="font-mono text-sm text-white/60">Skateshop y accesorios</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 5: EXTREMEPOXY (Oculto en Mobile con hidden md:flex) -->
+                <div class="project-card-item group cursor-pointer hidden md:flex flex-col" data-project="brand-5">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/extremepoxy/logoportada-xtreme2.webp" alt="Extremepoxy Logo"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#06B6D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#06B6D4] transition-colors">
+                            EXTREMEPOXY</p>
+                        <p class="font-mono text-sm text-white/60">Servicios de resina epóxica</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 6: YOYI.THESTUDIO (Oculto en Mobile con hidden md:flex) -->
+                <div class="project-card-item group cursor-pointer hidden md:flex flex-col" data-project="brand-6">
+                    <div
+                        class="aspect-square border-4 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white relative">
+                        <img src="../assets/branding/yoyithestudio/patronyoyi.webp" alt="YOYI.THESTUDIO Logo"
+                            class="w-full h-full object-cover" loading="lazy">
+                        <div
+                            class="absolute inset-0 bg-[#F4939D] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span
+                                class="font-mono text-xs bg-white text-black px-4 py-2 rounded-full border-2 border-black font-bold uppercase">Ver
+                                proyecto ✺</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 px-2">
+                        <p class="font-display text-2xl text-white group-hover:text-[#F4939D] transition-colors">
+                            YOYI.THESTUDIO</p>
+                        <p class="font-mono text-sm text-white/60">Marca personal y estilo de vida</p>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 w-full mt-8 flex justify-center lg:hidden">
+                    <button id="loadMoreBrandingBtn"
+                        class="font-display text-xl px-10 py-4 bg-white text-black border-4 border-black rounded-full shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] lg:hover:bg-yoyi-pink transition-colors uppercase tracking-wide">
+                        Cargar más ✦
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Contenedor de Detalles -->
+            <div id="project-details-container" class="hidden min-h-screen transition-all duration-500">
+                <button id="btn-close-project"
+                    class="mb-12 inline-flex items-center gap-2 bg-white text-black font-display text-lg px-8 py-3 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:scale-105 transition-transform uppercase relative z-20">
+                    ← Volver a proyectos
+                </button>
+
+                <!-- CACHUCHA CONTENT -->
+                <div id="brand-1" class="project-detail-content hidden text-white relative">
+                    <img src="../assets/branding/cachucha/estrella-cachucha.webp"
+                        class="branding-float top-[15%] -left-4 md:-left-12 w-16 md:w-24 opacity-60" loading="lazy">
+                    <img src="../assets/branding/cachucha/sol-cachucha.webp"
+                        class="branding-float top-[40%] -right-4 md:-right-12 w-20 md:w-32 opacity-50" loading="lazy">
+                    <img src="../assets/branding/cachucha/estrella-cachucha.webp"
+                        class="branding-float top-[65%] -left-2 md:-left-8 w-12 md:w-20 opacity-40" loading="lazy">
+                    <img src="../assets/branding/cachucha/sol-cachucha.webp"
+                        class="branding-float top-[85%] -right-6 md:-right-10 w-16 md:w-24 opacity-60" loading="lazy">
+
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">CACHUCHA</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Sombreros y accesorios de playa</p>
+                    <div class="flex flex-col gap-8 mb-12 relative z-10">
+                        <img src="../assets/branding/cachucha/1portada-cachucha.webp"
+                            class="w-full rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                            loading="lazy">
+                        <img src="../assets/branding/cachucha/2explanation-cachucha.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/cachucha/3brand-cachucha.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/cachucha/4mockup-cachucha.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <video src="../assets/branding/cachucha/final-social-cachucha.webm" autoplay loop muted
+                            playsinline class="w-full rounded-3xl border-4 border-black"></video>
+                    </div>
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-yoyi-blue mb-6">¿Qué hice aquí?</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Diseño y desarrollo completo de la identidad visual, universo de marca, aplicaciones
+                            gráficas y plantillas para redes sociales.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BOMBIN.BA CONTENT -->
+                <div id="brand-2" class="project-detail-content hidden text-white relative">
+                    <div class="bombin-shape top-[12%] -left-8 md:-left-16 w-24 md:w-36 opacity-80"
+                        style="animation-delay: 0s;">
+                        <svg viewBox="0 0 100 100" fill="#F26E4A">
+                            <path
+                                d="M50 0 L60 30 L95 20 L75 45 L100 65 L70 70 L75 100 L50 80 L25 100 L30 70 L0 65 L25 45 L5 20 L40 30 Z" />
+                        </svg>
+                    </div>
+                    <div class="bombin-shape top-[38%] -right-10 md:-right-24 w-32 md:w-56 opacity-60"
+                        style="animation-delay: -1.5s;">
+                        <svg viewBox="0 0 100 100" fill="#F26E4A">
+                            <path
+                                d="M50 0 L60 30 L95 20 L75 45 L100 65 L70 70 L75 100 L50 80 L25 100 L30 70 L0 65 L25 45 L5 20 L40 30 Z" />
+                        </svg>
+                    </div>
+
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">BOMBIN.BA</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Marca de pastelería artesanal</p>
+
+                    <div class="flex flex-col gap-8 mb-12 relative z-10">
+                        <img src="../assets/branding/bombin/1portada-bombin.webp"
+                            class="w-full rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/2paleta-bombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/3tipografia-bombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/4packaging-bombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/5packaging-bombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/6-publibombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/7-menubombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/8-menubombin.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/bombin/9-web-bombin.webp"
+                            class="w-full rounded-3xl border-4 border-black" loading="lazy">
+                    </div>
+
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-yoyi-yellow mb-6">¿Qué hice aquí?</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Este fue un proyecto colaborativo para una marca de pastelería artesanal que nació en 2020.
+                            La mascota de la marca fue creada por mi colega Alberto Flores Solano, mientras que yo
+                            lideré la presentación general. Mi rol se centró en construir el ecosistema visual: definir
+                            la paleta de colores, diseñar elementos de empaque como los stickers para las bolsas, crear
+                            contenido para redes sociales y hacer el prototipo de la web.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- IFI CONTENT -->
+                <div id="brand-3" class="project-detail-content hidden text-white relative">
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">IFI</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Branding de aplicación móvil</p>
+
+                    <div class="flex flex-col gap-8 mb-12 relative z-10">
+                        <img src="../assets/branding/ifi/1-portadaifi.webp"
+                            class="w-full rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/2-explanationifi.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/3palette-ifi.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/4-tipo-ifi.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/5-moodboard-ifi.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/6-logoandtab.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/7-logoandtab.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/8-wireframesifi.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/9break-web.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/10mockup-pantallas.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/11mockup-editorial.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/ifi/12Mockup-ifi.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/ifi/13-end.webp" class="w-full rounded-3xl border-4 border-black"
+                            loading="lazy">
+                    </div>
+
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-yoyi-pink mb-6">¿Qué hice aquí?</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Esto empezó como un caso de estudio en la universidad y rápidamente se convirtió en un
+                            recreo creativo. Construí la marca totalmente desde cero, desde el concepto inicial y la
+                            exploración gráfica, hasta el logo, la paleta de colores y el tono de voz.
+                            <br><br>
+                            Una vez que la identidad estuvo lista, le di vida en distintos formatos: la interfaz de la
+                            app (UI), la web, el diseño editorial y las piezas de publicidad. Todo lo que ves aquí fue
+                            diseñado por mí como parte de un ecosistema de marca súper completo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- TAPED CONTENT -->
+                <div id="brand-4" class="project-detail-content hidden text-white relative">
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">TAPED</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Skateshop y accesorios</p>
+
+                    <div class="flex flex-col gap-8 mb-12 relative z-10">
+                        <img src="../assets/branding/taped/1portada-taped.webp"
+                            class="w-full rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"
+                            loading="lazy">
+                        <img src="../assets/branding/taped/2-coloresazul.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/taped/3-coloresrojo.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/taped/4-tapes.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/5-definition.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/6-clothing.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/tiragrafica.webp" class="w-full border-y-4 border-black my-4"
+                            alt="Tira Gráfica Divider" loading="lazy">
+                        <img src="../assets/branding/taped/7-clothing2.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/8-skates.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/9-prototipo.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/10-mobile.webp" class="w-full rounded-3xl" loading="lazy">
+                        <img src="../assets/branding/taped/11-socialmedia.webp" class="w-full rounded-3xl"
+                            loading="lazy">
+                        <img src="../assets/branding/taped/12-theend.webp"
+                            class="w-full rounded-3xl border-4 border-black" loading="lazy">
+                    </div>
+
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-yoyi-green mb-6">¿Qué hice aquí?</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Construir TAPED desde cero significó crear una marca súper arraigada en la cultura del
+                            skate, dándole a la vez el carácter necesario para destacar junto a las grandes marcas que
+                            venden en la tienda.
+                            <br><br>
+                            Desde el concepto inicial y la exploración visual hasta el logo, paleta de colores, mockups
+                            de ropa, prototipos digitales y contenido para redes, cada parte de la identidad fue
+                            diseñada para sentirse audaz, auténtica y conectada con su comunidad.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- EXTREMEPOXY CONTENT -->
+                <div id="brand-5" class="project-detail-content hidden text-white relative">
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">EXTREMEPOXY</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Servicios de resina epóxica</p>
+
+                    <div class="flex flex-col gap-12 mb-12 relative z-10">
+                        <video src="../assets/branding/extremepoxy/logocolor-extreme.webm" autoplay loop muted
+                            playsinline
+                            class="w-full rounded-3xl border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]"></video>
+
+                        <div class="flex flex-col items-center justify-center gap-6 w-full my-4">
+                            <div class="w-full overflow-hidden py-3 border-y-2 border-white/10">
+                                <div class="flex whitespace-nowrap animate-scroll-left w-max">
+                                    <span
+                                        class="font-display text-3xl md:text-5xl text-white mx-4 tracking-widest animate-snake-wave">VARIACIONES
+                                        ✺ OTRAS VERSIONES ✺ ANTES DEL LOGO FINAL ✺ VARIACIONES ✺</span>
+                                </div>
+                            </div>
+
+                            <div class="w-full max-w-2xl mx-auto px-4">
+                                <img src="../assets/branding/extremepoxy/variations.webp"
+                                    class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                    alt="Logo Variations" loading="lazy">
+                            </div>
+
+                            <div class="w-full overflow-hidden py-3 border-y-2 border-[#06B6D4]/30">
+                                <div class="flex whitespace-nowrap animate-scroll-right w-max">
+                                    <span
+                                        class="font-display text-3xl md:text-5xl text-[#06B6D4] mx-4 tracking-widest animate-snake-wave">VARIACIONES
+                                        ✺ OTRAS VERSIONES ✺ ANTES DEL LOGO FINAL ✺ VARIACIONES ✺</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto">
+                            <img src="../assets/branding/extremepoxy/logoportada-xtreme.webp"
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="Portada Color" loading="lazy">
+                            <img src="../assets/branding/extremepoxy/logoportada2-bwxtreme.webp"
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="Portada B/W" loading="lazy">
+                        </div>
+
+                        <div class="mockup-slideshow mt-4">
+                            <img src="../assets/branding/extremepoxy/Mockup-brocha.webp" alt="Mockup Brocha"
+                                loading="lazy">
+                            <img src="../assets/branding/extremepoxy/Mockup-camioneta.webp" alt="Mockup Camioneta"
+                                loading="lazy">
+                            <img src="../assets/branding/extremepoxy/Mockup-espalda.webp" alt="Mockup Espalda"
+                                loading="lazy">
+                            <img src="../assets/branding/extremepoxy/mockup-sticker.webp" alt="Mockup Sticker"
+                                loading="lazy">
+                            <img src="../assets/branding/extremepoxy/Mockup-tshirt.webp" alt="Mockup Tshirt"
+                                loading="lazy">
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-[#06B6D4] mb-6">¿Qué hice aquí?</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Extremepoxy es una empresa de servicios de resina epóxica ubicada en Haines City, Florida.
+                            Querían una identidad que se sintiera divertida, memorable y con mucha personalidad,
+                            alejándose un poco del look corporativo y refinado que suele tener la industria de la
+                            resina.
+                            <br><br>
+                            Desarrollé el logo y la identidad visual usando colores llamativos y elementos lúdicos para
+                            darle a la marca una vibra mucho más enérgica y cercana.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- YOYI.THESTUDIO CONTENT -->
+                <div id="brand-6" class="project-detail-content hidden text-white relative">
+                    <h2 class="font-display text-5xl md:text-7xl text-white mb-2 relative z-10">YOYI.THESTUDIO</h2>
+                    <p class="font-mono text-xl text-white/70 mb-8 relative z-10">Marca personal y estilo de vida</p>
+
+                    <div class="flex flex-col gap-10 mb-12 relative z-10">
+                        <div class="w-full max-w-md mx-auto">
+                            <img src="../assets/branding/yoyithestudio/brandkit.webp"
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="YOYI Brandkit" loading="lazy">
+                        </div>
+
+                        <div class="w-full max-w-md mx-auto">
+                            <video src="../assets/branding/yoyithestudio/paletteandelements.webm" autoplay loop muted
+                                playsinline
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></video>
+                        </div>
+
+                        <img src="../assets/branding/yoyithestudio/tiragrafica-yoyi.webp"
+                            class="w-full border-y-4 border-black my-4 shadow-[0px_8px_0px_0px_rgba(0,0,0,1)]"
+                            alt="Tira Gráfica YOYI" loading="lazy">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mx-auto">
+                            <img src="../assets/branding/yoyithestudio/patronyoyi.webp"
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="Patrón YOYI Text" loading="lazy">
+                            <img src="../assets/branding/yoyithestudio/patronyoyi-elements.webp"
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="Patrón YOYI Elements" loading="lazy">
+                        </div>
+
+                        <div class="w-full max-w-sm mx-auto mt-4">
+                            <video src="../assets/branding/yoyithestudio/stack-elementos.webm" autoplay loop muted
+                                playsinline
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                                alt="Stack de Elementos"></video>
+                        </div>
+
+                        <div class="w-full max-w-xl mx-auto">
+                            <img src="../assets/branding/yoyithestudio/yoyillaveros.webp" class="w-full rounded-3xl"
+                                alt="YOYI Llaveros Merch" loading="lazy">
+                        </div>
+
+                        <div class="w-full max-w-lg mx-auto">
+                            <video src="../assets/branding/yoyithestudio/brandingyoyikit.webm" autoplay loop muted
+                                playsinline
+                                class="w-full rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"></video>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-[#2A2A2A] border-4 border-black rounded-3xl p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <h3 class="font-display text-3xl text-[#F4939D] mb-6">Sí... esta es mi marca.</h3>
+                        <p class="font-mono text-lg leading-relaxed opacity-90">
+                            Quería que fuera divertida, un poco rara, pero totalmente coherente. Mi proceso de diseño es
+                            bastante simple: me dejo llevar por lo que amo. Por eso vas a ver tanto de mi obsesión con
+                            las formas geométricas, personajes expresivos y la ilustración en todo lo que hago.
+                            <br><br>
+                            Siempre me ha gustado la idea de que el diseño sea algo tangible. Se trata de cosas que
+                            realmente puedes usar o tener en tu espacio. ¿Los colores? Son literalmente los tonos que
+                            elijo para mi propia ropa y mis espacios. Es algo muy personal de principio a fin. Incluso
+                            los detalles del logo, como la forma en que jugué con la puntuación en 'studiO', vienen
+                            simplemente de divertirme con la lógica del diseño.
+                            <br><br>
+                            Quería mostrar mi forma de pensar, y esta identidad es la versión más honesta de mi visión
+                            creativa. Me hace muy feliz que por fin esté allá afuera.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER PARA PÁGINAS SECUNDARIAS (Fondo Amarillo) -->
+        <footer class="relative pt-16 pb-28 px-6 bg-[#F6C445] text-center border-t-8 border-black overflow-hidden z-20">
+            <!-- Copyright centrado en negro -->
+            <p class="font-mono text-[#1C1C1C] font-bold text-xs md:text-sm tracking-widest uppercase relative z-10">©
+                2026 POR JOHANA DÁVILA — YOYI . THE STUDIO</p>
+
+            <!-- Contenedor del Eyeball Buddy de P5.js -->
+            <div id="eyeball-buddy-container"
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 z-0 pointer-events-none"></div>
+        </footer>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

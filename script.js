@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMobileMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
     }
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        link.addEventListener('click', () => mobileMenu.classList.remove('active'));    
     });
 
     // Efecto "PLOP" para el logo
@@ -129,51 +129,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /*  ==========================================================================
-        5. INSIDE YOYI'S MIND - ELEMENTOS FLOTANTES (HOME)
-        ========================================================================== */
-    const mindItems = [{
-            name: 'Marshall Headphones',
-            img: '../assets/branding/auriculares-item.webp',
-            x: -380,
-            y: -180
-        },
-        {
-            name: 'Colorful maxi dresses',
-            img: '../assets/branding/vestidoamarillo-item.webp',
-            x: 450,
-            y: -180
-        },
-        {
-            name: 'Tropical Fruits',
-            img: '../assets/branding/frutas-item.webp',
-            x: -450,
-            y: 100
-        },
-        {
-            name: 'Creating Spotify Playlists',
-            img: '../assets/branding/laptop-item.webp',
-            x: 400,
-            y: 120,
-            large: true
-        },
-        {
-            name: 'Rollerskating',
-            img: '../assets/branding/rioroller-item.webp',
-            x: -180,
-            y: -380
-        },
-        {
-            name: 'Nike Dunk Low Enthusiast',
-            img: '../assets/branding/shoe1-item.webp',
-            x: 200,
-            y: -380
-        },
-    ];
+    /* ==========================================================================
+   5. INSIDE YOYI'S MIND - ELEMENTOS FLOTANTES (HOME)
+   ========================================================================== */
 
-    const headTrigger = document.getElementById('yoyi-head-trigger');
-    const floatingContainer = document.getElementById('floating-items');
-    let mindIsOpen = false;
+// 1. Detectamos el idioma actual leyendo la etiqueta <html> del documento
+const currentLang = document.documentElement.lang;
+
+// 2. Definimos los elementos usando una condición rápida para el nombre
+const mindItems = [
+    {
+        name: currentLang === 'es' ? 'Auriculares Marshall' : 'Marshall Headphones',
+        img: '../assets/branding/auriculares-item.webp',
+        x: -380,
+        y: -180
+    },
+    {
+        name: currentLang === 'es' ? 'Vestidos largos y coloridos' : 'Colorful maxi dresses',
+        img: '../assets/branding/vestidoamarillo-item.webp',
+        x: 450,
+        y: -180
+    },
+    {
+        name: currentLang === 'es' ? 'Frutas Tropicales' : 'Tropical Fruits',
+        img: '../assets/branding/frutas-item.webp',
+        x: -450,
+        y: 100
+    },
+    {
+        name: currentLang === 'es' ? 'Armar Playlists en Spotify' : 'Creating Spotify Playlists',
+        img: '../assets/branding/laptop-item.webp',
+        x: 400,
+        y: 120,
+        large: true
+    },
+    {
+        name: currentLang === 'es' ? 'Andar en rollers' : 'Rollerskating',
+        img: '../assets/branding/rioroller-item.webp',
+        x: -180,
+        y: -380
+    },
+    {
+        name: currentLang === 'es' ? 'Acumular nike dunks' : 'Nike Dunk Low Enthusiast',
+        img: '../assets/branding/shoe1-item.webp',
+        x: 200,
+        y: -380
+    }
+];
+
+const headTrigger = document.getElementById('yoyi-head-trigger');
+const floatingContainer = document.getElementById('floating-items');
+let mindIsOpen = false;
 
     if (headTrigger && floatingContainer) {
         const clickLabel = document.createElement('div');
@@ -521,14 +527,7 @@ if (loadMoreBrandingBtn && brandingItems.length > 0) {
     // Esta función toma el idioma deseado ('en' o 'es') y cambia la URL actual
     window.switchLanguage = function(newLang) {
         // Obtenemos la ruta actual (Ej: /en/uxui.html o /es/art.html)
-        // --- REGLA TEMPORAL PARA ESPAÑOL ---
-        // Mientras la web en español esté en construcción, forzamos la redirección al index
-        if (newLang === 'es') {
-            window.location.href = '/es/index.html';
-            return; // Detenemos la función aquí
-        }
-        // -----------------------------------
-
+        const currentPath = window.location.pathname;
         // Comportamiento normal (ej. cuando cambian de ES a EN)
         if (currentPath.includes('/en/') || currentPath.includes('/es/')) {
             const newPath = currentPath.replace(/\/(en|es)\//, `/${newLang}/`);

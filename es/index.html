@@ -1,37 +1,689 @@
 <!doctype html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En Construcción | YOYI.THE STUDIO</title>
-    <!-- Vinculamos tu hoja de estilos principal (subiendo un nivel con ../) -->
+    <title>YOYI.THE STUDIO | Johana Dávila | Diseño Multimedia y Arte en Buenos Aires</title>
+
+    <meta name="description"
+        content="Descubre el portafolio de Johana Dávila (YOYI), diseñadora multimedial e ilustradora radicada en Argentina. Especialista en creación de marcas, arte digital, motion graphics y diseño web.">
+    <meta name="keywords"
+        content="Diseño Multimedia Argentina, Arte Digital Buenos Aires, Branding, Creación de Marcas, Ilustración, Motion Graphics, Diseño Web, UX/UI, Portafolio Johana Dávila, yoyi.thestudio, Diseñadora Creativa">
+    <meta name="author" content="Johana Dávila">
+
+    <!-- Open Graph / Previsualización en Redes Sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="YOYI.THE STUDIO | Diseño Multimedia y Arte">
+    <meta property="og:description"
+        content="Explora mis proyectos creativos en diseño multimedia, arte digital, motion graphics y branding. Soy Johana Dávila, diseñadora e ilustradora en Buenos Aires, Argentina.">
+    <meta property="og:url" content="https://www.yoyithestudio.com/es/">
+
+    <!-- Ruta de imagen actualizada -->
+    <meta property="og:image" content="https://www.yoyithestudio.com/assets/branding/yoyipatron-seo.jpg">
+
+    <!-- Metadatos de tamaño para carga rápida -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Johana Dávila",
+            "alternateName": "YOYI",
+            "jobTitle": "Diseñadora Multimedial y Artista Digital",
+            "description": "Diseñadora multimedial e ilustradora radicada en Buenos Aires, Argentina. Especializada en Branding, creación de marcas, arte digital y Motion Graphics.",
+            "url": "https://www.yoyithestudio.com/es/"
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
-    
-    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
+        crossorigin="anonymous">
+    <link rel="icon" type="image/webp" href="../assets/branding/favicon-32x32.webp">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 </head>
-<body class="bg-[#1C1C1C] h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
-    
-    <div class="max-w-2xl mx-auto text-center">
-        <!-- Elemento decorativo animado -->
-        <div class="inline-block mb-8 animate-bounce">
-            <span class="text-6xl">🚧</span>
+
+<body class="bg-[#1C1C1C]">
+    <div id="app-wrapper" class="relative w-full overflow-x-hidden">
+
+        <nav id="navbar">
+            <div
+                class="nav-container max-w-7xl mx-auto flex justify-between items-center bg-[#FFF8F0] rounded-full px-6 py-3 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <a href="#hero" class="logo-pop">
+                    <img src="../assets/branding/yoyi-color.webp" alt="YOYI Logo" class="h-10 md:h-12 w-auto"
+                        loading="eager">
+                </a>
+
+                <div class="hidden lg:flex items-center gap-2 lg:gap-4">
+                    <a href="#projects" class="nav-pill">Proyectos</a>
+                    <a href="#about" class="nav-pill">Sobre mí</a>
+                    <a href="#contact" class="nav-pill">Contacto</a>
+                    <a href="#lets-talk" class="nav-pill btn-contacto">¡Hablemos!</a>
+
+                    <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
+                        <button onclick="switchLanguage('en')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center opacity-50 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="English Website">
+                            <img src="https://flagcdn.com/w40/us.png" alt="English" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="switchLanguage('es')"
+                            class="w-8 h-8 rounded-full border-2 border-black bg-[#1C1C1C] flex items-center justify-center hover:scale-110 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden"
+                            aria-label="Spanish Website">
+                            <img src="https://flagcdn.com/w40/es.png" alt="Español" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-black">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobileMenu"
+            class="mobile-menu fixed inset-0 z-[100] p-8 flex flex-col items-center justify-center gap-6 bg-[#1C1C1C] text-white">
+            <button id="closeMobileMenu"
+                class="absolute top-6 right-6 p-2 text-white hover:text-yoyi-pink transition-colors">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <!-- Links Internos -->
+            <a href="art.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-green hover:scale-105 transition-transform uppercase text-center">Art</a>
+            <a href="audiovisual.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-yellow hover:scale-105 transition-transform uppercase text-center">Motion
+                Design</a>
+            <a href="branding.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-pink hover:scale-105 transition-transform uppercase text-center">Branding</a>
+            <a href="uxui.html"
+                class="mobile-nav-link font-display text-3xl text-yoyi-blue hover:scale-105 transition-transform uppercase text-center">Web
+                & App Design</a>
+
+            <div class="w-16 border-t-2 border-white/20 my-2"></div>
+
+            <a href="#about" class="mobile-nav-link font-display text-xl text-white">Sobre Yoyi</a>
+            <a href="#contact" class="mobile-nav-link font-display text-xl text-white">Contacto</a>
+            <a href="#lets-talk" class="mobile-nav-link font-display text-xl text-white font-bold">¡Hablemos!</a>
+
+            <div class="flex items-center gap-6 mt-6 pt-6 border-t-2 border-white/10 w-full justify-center">
+                <button onclick="switchLanguage('en')"
+                    class="flex flex-col items-center gap-2 opacity-50 hover:opacity-100 hover:scale-105 transition-all"
+                    aria-label="English Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white/50 bg-[#1C1C1C] text-white flex items-center justify-center text-lg">EN</span>
+                </button>
+                <button onclick="switchLanguage('es')"
+                    class="flex flex-col items-center gap-2 hover:scale-105 transition-transform"
+                    aria-label="Spanish Website">
+                    <span
+                        class="w-10 h-10 rounded-full border-2 border-white bg-[#1C1C1C] text-white flex items-center justify-center text-lg">ES</span>
+                </button>
+            </div>
         </div>
 
-        <h1 class="font-display text-5xl md:text-7xl text-white mb-6 uppercase tracking-tight">
-            ESTAMOS <span class="text-[#F6C445]">TRABAJANDO</span> EN ELLO
-        </h1>
-        
-        <p class="font-mono text-lg md:text-xl text-white/80 mb-10">
-            La versión en español de este portafolio aún se está programando. ¡Vuelve pronto para ver el resultado final!
-        </p>
-        
-        <!-- Botón para regresar a la versión en inglés -->
-        <a href="/en/index.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-lg border-4 border-black bg-[#F4939D] text-[#1C1C1C] hover:bg-white transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 uppercase font-display">
-            ← Back to English
-        </a>
+        <section id="hero"
+            class="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-24 overflow-hidden">
+            <div class="bg-shape top-[40%] left-[2%] w-32 h-32 md:w-48 md:h-48 text-yoyi-green wander-slow">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <polygon points="50,5 95,75 5,75" /></svg>
+            </div>
+            <div class="bg-shape top-[45%] right-[5%] w-24 h-24 md:w-32 md:h-32 text-yoyi-yellow wander-medium"
+                style="animation-delay: -2s;">
+                <svg viewBox="0 0 24 24" class="w-full h-full fill-current">
+                    <circle cx="12" cy="12" r="6" />
+                    <path
+                        d="M12 2V4 M12 20V22 M2 12H4 M20 12H22 M4.9 4.9L6.3 6.3 M17.7 17.7L19.1 19.1 M4.9 19.1L6.3 17.7 M17.7 6.3L19.1 4.9"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="bg-shape bottom-[5%] left-[5%] w-20 h-20 md:w-28 md:h-28 text-yoyi-blue wander-fast">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <rect width="100" height="100" /></svg>
+            </div>
+            <div class="bg-shape top-[55%] right-[15%] w-16 h-16 md:w-24 md:h-24 text-yoyi-pink wander-slow"
+                style="animation-delay: -5s;">
+                <svg viewBox="0 0 24 24" class="w-full h-full fill-current">
+                    <path d="M12 0l3 9h9l-7 5 3 9-8-6-8 6 3-9-7-5h9z" /></svg>
+            </div>
+            <div class="bg-shape bottom-[10%] right-[20%] w-12 h-12 md:w-20 md:h-20 text-yoyi-green wander-fast"
+                style="animation-delay: -1s;">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <circle cx="50" cy="50" r="50" /></svg>
+            </div>
+            <div class="bg-shape bottom-[20%] left-[12%] w-14 h-14 text-yoyi-yellow wander-fast"
+                style="animation-delay: -3s;">
+                <svg viewBox="0 0 24 24" class="w-full h-full fill-current">
+                    <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z" /></svg>
+            </div>
+            <div class="bg-shape bottom-[30%] right-[8%] w-16 h-16 text-yoyi-pink wander-medium blob"
+                style="animation-delay: -7s;">
+                <svg viewBox="0 0 100 100" class="w-full h-full fill-current">
+                    <path
+                        d="M36.4,24.3c14.8-13.6,41.4-11.8,51.9,6.5c10.3,18.1,3.7,43.3-13.6,54.6c-18.7,12.2-46.3,6.8-55.6-13.6 C11.5,55.8,20.8,38.7,36.4,24.3z" />
+                </svg>
+            </div>
+            <div class="bg-shape top-[50%] right-[25%] w-12 h-12 text-yoyi-blue wander-fast"
+                style="animation-delay: -4s;">
+                <svg viewBox="0 0 24 24" class="w-full h-full fill-current">
+                    <path d="M12 0 L15 9 L24 12 L15 15 L12 24 L9 15 L0 12 L9 9 Z" /></svg>
+            </div>
+
+            <!-- Mantenemos el Eslogan en Inglés -->
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-12 mb-10 lg:mb-20 leading-none lg:leading-tight tracking-normal md:tracking-wide text-white reveal text-center w-full px-4"
+                style="animation-delay: 0.5s;">
+                <span class="block lg:inline"><span class="text-yoyi-green">CRAFTED</span> <span
+                        class="text-yoyi-yellow">WITH</span></span>
+                <span class="block lg:inline"><span class="text-yoyi-blue">CARE</span><span
+                        class="text-yoyi-pink">!</span></span>
+            </h1>
+
+            <div class="w-[90%] md:w-full max-w-5xl mx-auto mb-6 reveal relative group">
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[102%] h-[105%] bg-white blur-2xl opacity-50 -z-10 rounded-3xl animate-pulse">
+                </div>
+                <div
+                    class="rounded-2xl overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-black w-full relative z-20">
+                    <div style="padding:56.25% 0 0 0;position:relative;">
+                        <iframe
+                            src="https://player.vimeo.com/video/1148533408?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1"
+                            frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                            title="Showreel 2025"></iframe>
+                    </div>
+                </div>
+                <p class="video-caption relative z-20">✺ Showreel Dic 2025</p>
+            </div>
+
+            <div
+                class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center reveal mt-4 relative z-20 w-[90%] md:w-auto">
+                <button id="mobileViewProjectsBtn"
+                    class="md:hidden w-full btn-primary px-6 py-3 rounded-full border-2 border-black text-base font-bold bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">Ver
+                    Proyectos</button>
+                <a href="#projects"
+                    class="hidden md:inline-flex btn-primary md:px-10 md:py-4 rounded-full border-2 border-black md:text-xl lg:hover:scale-105 transition-transform bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">Ver
+                    Proyectos</a>
+                <a href="#about"
+                    class="w-full md:w-auto px-6 py-3 md:px-10 md:py-4 rounded-full border-2 border-white text-white font-display text-base md:text-xl lg:hover:bg-white lg:hover:text-black transition-all lg:hover:scale-105 text-center">Conóceme
+                    :) </a>
+            </div>
+        </section>
+
+        <!-- Tira Gráfica con Eslogan -->
+        <div class="wavy-container">
+            <svg class="wavy-svg" viewBox="0 0 6000 160" preserveAspectRatio="none">
+                <path
+                    d="M 0 80 Q 250 20 500 80 T 1000 80 T 1500 80 T 2000 80 T 2500 80 T 3000 80 T 3500 80 T 4000 80 T 4500 80 T 5000 80 T 5500 80 T 6000 80"
+                    fill="none" stroke="none" />
+                <path id="snake-path"
+                    d="M 0 80 Q 250 20 500 80 T 1000 80 T 1500 80 T 2000 80 T 2500 80 T 3000 80 T 3500 80 T 4000 80 T 4500 80 T 5000 80 T 5500 80 T 6000 80"
+                    fill="none" stroke="#F6C445" stroke-width="96" />
+                <text font-family="'ArchivoBlack', sans-serif" font-size="36" fill="#1C1C1C" text-transform="uppercase"
+                    letter-spacing="2" dy="12">
+                    <textPath href="#snake-path" startOffset="0">
+                        CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS · BRANDING ✦ YOYI.THESTUDIO ✦ POR JOHANA
+                        DÁVILA ✺ CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS · BRANDING ✦ YOYI.THESTUDIO ✦ POR
+                        JOHANA DÁVILA ✺ CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS · BRANDING ✦ YOYI.THESTUDIO
+                        ✦ POR JOHANA DÁVILA ✺ CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS · BRANDING ✦
+                        YOYI.THESTUDIO ✦ POR JOHANA DÁVILA ✺ CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS ·
+                        BRANDING ✦ YOYI.THESTUDIO ✦ POR JOHANA DÁVILA ✺ CRAFTED WITH CARE ✺ COLOR ✺ SHAPES · MOTION
+                        GRAPHICS · BRANDING ✦ YOYI.THESTUDIO ✦ POR JOHANA DÁVILA ✺
+                        <animate attributeName="startOffset" from="0" to="-2000" dur="15s" repeatCount="indefinite" />
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+
+        <section id="projects" class="hidden md:block py-32 px-6 bg-[#FFF8F0]">
+            <div class="max-w-[1400px] mx-auto flex flex-col items-center">
+                <div class="mb-20 text-center reveal">
+                    <h2 class="font-display text-5xl md:text-7xl text-black uppercase">
+                        Proyectos <span class="text-yoyi-green">Destacados</span>
+                    </h2>
+                </div>
+
+                <div id="sortable-cards"
+                    class="flex flex-wrap lg:flex-nowrap justify-center items-center gap-6 lg:gap-10 w-full reveal">
+                    <div class="draggable-card-wrapper relative">
+                        <a href="uxui.html"
+                            class="project-card group relative overflow-hidden block w-[260px] h-[380px] rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] cursor-grab active:cursor-grabbing transition-transform hover:-translate-y-3 duration-300"
+                            style="background-color: var(--yoyi-blue);">
+                            <video src="../assets/ux-ui/webandapp-portada.webm" autoplay loop muted playsinline
+                                loading="lazy"
+                                class="absolute inset-0 w-full h-full object-contain p-8 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ease-out z-10 pointer-events-none"></video>
+                            <div
+                                class="card-content flex items-center justify-center w-full h-full relative z-20 group-hover:opacity-0 transition-opacity duration-300">
+                                <h3 class="font-display text-4xl text-black text-center leading-tight">WEB &<br>APP</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="draggable-card-wrapper relative">
+                        <a href="audiovisual.html"
+                            class="project-card group relative overflow-hidden block w-[260px] h-[380px] rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] cursor-grab active:cursor-grabbing transition-transform hover:-translate-y-3 duration-300"
+                            style="background-color: var(--yoyi-yellow);">
+                            <video src="../assets/audiovisual/yoyishapes.webm" autoplay loop muted playsinline
+                                loading="lazy"
+                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></video>
+                            <div
+                                class="card-content flex items-center justify-center w-full h-full relative z-20 group-hover:opacity-0 transition-opacity duration-300">
+                                <h3 class="font-display text-4xl text-black text-center leading-tight">MOTION<br>DESIGN
+                                </h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="draggable-card-wrapper relative">
+                        <a href="art.html"
+                            class="project-card group relative overflow-hidden block w-[260px] h-[380px] rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] cursor-grab active:cursor-grabbing transition-transform hover:-translate-y-3 duration-300"
+                            style="background-color: var(--yoyi-green);">
+                            <video src="../assets/art/yoyixthevault.webm" autoplay loop muted playsinline loading="lazy"
+                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></video>
+                            <div
+                                class="card-content flex items-center justify-center w-full h-full relative z-20 group-hover:opacity-0 transition-opacity duration-300">
+                                <h3 class="font-display text-4xl text-black text-center leading-tight">ARTE</h3>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="draggable-card-wrapper relative">
+                        <a href="branding.html"
+                            class="project-card group relative overflow-hidden block w-[260px] h-[380px] rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] cursor-grab active:cursor-grabbing transition-transform hover:-translate-y-3 duration-300"
+                            style="background-color: var(--yoyi-pink);">
+                            <video src="../assets/branding/logosbranding.webm" autoplay loop muted playsinline
+                                loading="lazy"
+                                class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></video>
+                            <div
+                                class="card-content flex items-center justify-center w-full h-full relative z-20 group-hover:opacity-0 transition-opacity duration-300">
+                                <h3 class="font-display text-4xl text-black text-center leading-tight">BRANDING</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-20 reveal relative hidden lg:flex flex-col items-center z-50">
+                    <div
+                        class="info-trigger w-12 h-12 rounded-full border-4 border-black bg-white flex items-center justify-center cursor-help shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-110 hover:bg-yoyi-yellow group">
+                        <span class="font-display text-2xl font-bold text-black mt-1">?</span>
+                        <div
+                            class="info-tooltip absolute bottom-16 w-[300px] md:w-[400px] bg-black text-white p-6 rounded-2xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 text-center">
+                            <p class="font-mono text-sm leading-relaxed font-bold">
+                                ¡Puedes arrastrar y acomodar las tarjetas como quieras! Para explorar los proyectos, haz
+                                clic en tu favorito.
+                            </p>
+                            <div
+                                class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-black">
+                            </div>
+                        </div>
+                    </div>
+                    <span class="font-mono text-xs text-black opacity-60 mt-4 uppercase tracking-widest font-bold">Pasa
+                        el cursor para un tip</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SOBRE MÍ: DUAL LAYOUT (VERSIÓN ESPAÑOL) -->
+        <section id="about" class="py-16 md:py-24 lg:py-32 px-6 bg-white overflow-hidden relative"
+            aria-labelledby="about-heading">
+
+            <!-- ==========================================
+                 1. LAYOUT CLÁSICO (MOBILE & TABLET)
+                 Visible solo en pantallas menores a 1024px
+                 ========================================== -->
+            <div class="block lg:hidden max-w-7xl mx-auto">
+                <div class="mb-10 reveal text-center md:text-left">
+                    <h2 class="font-display text-4xl md:text-5xl text-black uppercase">
+                        ¿Quién es <span style="color: var(--yoyi-pink);">Yoyi</span>?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="reveal flex justify-center md:justify-start">
+                        <figure
+                            class="relative w-full max-w-[280px] md:max-w-none rounded-3xl overflow-hidden aspect-square border-4 border-black group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+                            style="background-color: var(--yoyi-blue);">
+                            <picture>
+                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi"
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+                                    loading="lazy">
+                            </picture>
+                            <span
+                                class="absolute bottom-4 right-4 md:bottom-8 md:right-8 inline-block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold bg-[#F6C445] text-black border-2 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal">✺
+                                DISEÑADORA MULTIMEDIAL</span>
+                        </figure>
+                    </div>
+
+                    <div class="reveal flex flex-col gap-4 justify-center text-center md:text-left">
+
+                        <!-- Texto exclusivo para Mobile -->
+                        <div class="block md:hidden">
+                            <p class="about-text font-bold text-base mb-4">Hola, soy YOYI.</p>
+                            <p class="about-text text-sm mb-4">Soy artista digital y diseñadora. Originaria de Caracas y
+                                radicada en Buenos Aires, he pasado los últimos seis años explorando la convergencia
+                                entre el arte y el diseño.</p>
+                            <p class="about-text text-sm mb-4">Mi camino comenzó con bocetos analógicos, evolucionando
+                                hacia una práctica donde ahora uso movimiento, sonido y código interactivo para darle
+                                vida a los conceptos.</p>
+                            <p class="about-text text-sm italic font-bold">Busco colaborar en proyectos que celebren el
+                                color, la textura y la expresión artística. Mi enfoque es la intersección del arte, la
+                                música, la moda y los medios audiovisuales. <span
+                                    class="block mt-2 text-[10px] text-yoyi-pink">(por favor revisa mi versión de
+                                    computadora — me tomó como 1 mes sin dormir, programando hasta el amanecer, ¡vale la
+                                    pena!)</span></p>
+                        </div>
+
+                        <!-- Texto exclusivo para Tablet -->
+                        <div class="hidden md:block">
+                            <p class="about-text font-bold text-lg mb-4">Hola, soy Johana, conocida como YOYI.</p>
+                            <p class="about-text text-base mb-4">Soy artista digital y diseñadora multimedial con seis
+                                años de experiencia. Mi viaje comenzó con bocetos analógicos e ilustraciones a mano,
+                                evolucionando hacia una carrera donde ahora uso movimiento, sonido y código interactivo
+                                para dar vida a las ideas.</p>
+                            <p class="about-text text-base mb-4">Originaria de Caracas, he hecho de Buenos Aires mi
+                                hogar durante los últimos ocho años. Actualmente estoy terminando mi carrera de Diseño
+                                Multimedial en la Escuela Da Vinci, donde he combinado mis raíces autodidactas con
+                                formación técnica.</p>
+                            <p class="about-text text-base font-bold">Hoy, me enfoco en proyectos que priorizan el
+                                color, la textura y la expresión interactiva. Mi objetivo es seguir creando en la
+                                encrucijada del arte, la música, la moda y los medios audiovisuales, poniendo mi corazón
+                                en cada proyecto.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 2. LAYOUT EDITORIAL / ZINE (SOLO DESKTOP)
+                 Visible solo en pantallas mayores a 1024px
+                 ========================================== -->
+            <div class="hidden lg:block max-w-[1300px] mx-auto relative">
+
+                <!-- Cabecera Editorial -->
+                <div class="grid grid-cols-12 gap-6 items-end mb-24 relative">
+                    <div class="col-span-8 relative z-20 reveal">
+                        <!-- Titular unificado con la jerarquía en inglés -->
+                        <h2 id="about-heading-desktop"
+                            class="font-display text-black uppercase flex flex-col tracking-tighter">
+                            <!-- "HOLA," en tamaño gigante -->
+                            <span class="text-[10rem] lg:text-[13rem] leading-none mb-2">
+                                HOLA,
+                            </span>
+                            <!-- "SOY YOYI!" con tamaño en contraste -->
+                            <span class="text-6xl lg:text-[7rem] leading-[0.85]">
+                                SOY <span class="text-yoyi-pink relative inline-block">
+                                    YOYI!
+                                    <!-- Estrella más cerca del signo de exclamación (-right-12 y -top-6) -->
+                                    <svg class="absolute -top-6 -right-12 w-16 h-16 text-yoyi-yellow animate-wiggle"
+                                        viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M50,10 Q50,40 90,50 Q50,60 50,90 Q50,60 10,50 Q50,40 50,10 Z" />
+                                        <circle cx="80" cy="20" r="2" fill="currentColor" />
+                                        <circle cx="20" cy="80" r="3" fill="currentColor" />
+                                    </svg>
+                                </span>
+                            </span>
+                        </h2>
+
+                        <div class="flex items-center gap-4 mt-12 ml-2">
+                            <div class="w-20 border-t-4 border-black"></div>
+                            <p class="font-mono text-sm uppercase tracking-widest font-bold">
+                                Artista Digital & Diseñadora Multimedial
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-span-4 col-start-9 mt-12 lg:mt-[-60px] relative z-10 reveal">
+                        <figure
+                            class="relative w-full max-w-[280px] lg:max-w-[340px] mx-auto rounded-[2rem] overflow-hidden aspect-[3/4] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#7DC3D1] group">
+                            <picture>
+                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi"
+                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+                                    loading="lazy">
+                            </picture>
+                            <span
+                                class="absolute bottom-6 right-6 inline-block px-4 py-2 rounded-full text-xs font-bold bg-[#F6C445] text-black border-4 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal rotate-[-5deg]">
+                                ✺ DISEÑADORA MULTIMEDIAL
+                            </span>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- Cuerpo Editorial -->
+                <div class="grid grid-cols-12 gap-16 items-start reveal">
+                    <div class="col-span-5 flex flex-col gap-8">
+                        <p class="about-text text-2xl font-bold leading-snug">
+                            Soy artista digital y diseñadora multimedial, nacida en Caracas, Venezuela, y viviendo en
+                            Buenos Aires. Llevo más de 6 años trabajando en proyectos creativos mientras continúo mi
+                            formación de Diseño Multimedial en la
+                            <span class="relative inline-block whitespace-nowrap">
+                                <span
+                                    class="absolute -inset-1 bg-yoyi-yellow -skew-y-2 -z-10 rounded-sm opacity-80"></span>
+                                <strong class="relative text-black">Escuela Da Vinci</strong>
+                            </span>.
+                        </p>
+                        <p class="about-text text-lg">
+                            Durante este tiempo he trabajado en ilustración, identidad visual, contenido para redes
+                            sociales, plataformas de streaming, lanzamientos musicales, animación y video. Me gusta
+                            moverme entre distintas disciplinas porque cada proyecto me permite aprender algo nuevo y
+                            encontrar formas diferentes de comunicar una idea.
+                        </p>
+
+                        <div
+                            class="relative inline-block self-start mt-2 rotate-[3deg] bg-[#7DC3D1] text-black font-mono text-base px-6 py-3 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform hover:rotate-0">
+                            <em>(O tal vez simplemente soy una ñoña con demasiados intereses)</em> ✦
+                            <svg class="absolute -top-12 -right-16 w-20 h-20 text-yoyi-pink" viewBox="0 0 100 100"
+                                fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M10,90 Q40,20 90,40 M75,20 L90,40 L65,50" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="col-span-7 flex flex-col gap-10">
+                        <!-- Tamaño unificado a text-6xl -->
+                        <blockquote
+                            class="font-display text-6xl text-yoyi-pink leading-none border-t-8 border-black pt-6 uppercase relative">
+                            "AUNQUE MI TRABAJO ESTÉ LLENO DE COLOR, JUEGO Y EXPERIMENTACIÓN, ME TOMO MUY EN SERIO TODO
+                            LO QUE HAGO."
+                        </blockquote>
+
+                        <div class="grid grid-cols-2 gap-10">
+                            <div class="flex flex-col gap-6 relative">
+                                <p class="about-text text-lg">
+                                    Soy una <strong>persona muy curiosa</strong>. Me interesan el arte, la música, el
+                                    diseño, la moda, la ilustración, los libros y las historias en todas sus formas.
+                                    Disfruto investigar, observar y conectar referencias.
+                                </p>
+                                <p class="about-text text-lg">
+                                    Me gusta entender el porqué detrás de cada decisión y enfrentar desafíos nuevos. Si
+                                    no sé algo hoy, probablemente mañana ya esté investigándolo.
+                                </p>
+                            </div>
+
+                            <!-- Padding unificado a p-8, self-start y mb-16 añadidos para dar respiro inferior -->
+                            <div
+                                class="bg-[#FFF8F0] border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300 self-start mb-16">
+                                <p class="about-text text-xl font-bold mb-6">
+                                    Disfruto colaborar con personas que tienen proyectos ambiciosos, perspectivas
+                                    diferentes y ganas de construir algo
+                                    <span class="relative inline-block">
+                                        auténtico
+                                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-yoyi-green"
+                                            viewBox="0 0 100 20" preserveAspectRatio="none" fill="none"
+                                            stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                                            <path d="M0,15 Q12,5 25,15 T50,15 T75,15 T100,15" />
+                                        </svg>
+                                    </span>.
+                                </p>
+                                <div class="pt-6 border-t-4 border-black/10">
+                                    <p class="about-text text-sm font-mono leading-relaxed">
+                                        <span class="text-yoyi-pink font-bold text-base">PD:</span> Y si llegaste hasta
+                                        acá, ¡gracias por darte una vuelta por mi web y tomarte el tiempo de conocer un
+                                        poco de lo que hago, pues significa más de lo que imaginas!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Mente intacta en inglés -->
+        <section id="mind-section" class="hidden lg:block pt-32 pb-16 px-6 bg-[#1C1C1C] overflow-hidden relative">
+            <div class="max-w-7xl mx-auto text-center relative z-10">
+                <h2
+                    class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[5.5rem] mb-12 text-white reveal tracking-tight flex flex-col md:block items-center justify-center">
+                    <span>PIECES</span>
+                    <span class="text-yoyi-yellow">OF </span>
+                    <span class="inline-block animate-wiggle text-white">ME</span>
+                </h2>
+
+                <div class="mind-container relative w-full mx-auto flex items-center justify-center">
+                    <div id="floating-items" class="absolute inset-0 pointer-events-none"></div>
+                    <div id="yoyi-head-trigger" class="relative cursor-pointer group">
+                        <img src="../assets/branding/yoyi-cara.webp" alt="Yoyi Base" loading="lazy">
+                        <img src="../assets/branding/yoyi-tapa.webp" id="head-lid" alt="Yoyi Lid"
+                            class="absolute top-0 left-0" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block lg:hidden py-16 px-6 bg-[#FFF8F0] border-t-8 border-black text-center relative z-10">
+            <div class="max-w-md mx-auto">
+                <h2 class="font-display text-4xl text-black uppercase mb-4 leading-tight">
+                    ¿lo ves desde <span class="text-yoyi-pink drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">el</span>
+                    celular?
+                </h2>
+                <p class="font-mono text-base text-black mb-8 font-bold">
+                    Puedes explorar todos mis proyectos en el celular, pero algunas animaciones y detalles interactivos
+                    se aprecian mejor en una computadora.
+                </p>
+            </div>
+        </section>
+
+        <!-- Let's Talk intacta en inglés con botón en español -->
+        <section id="lets-talk" class="py-16 px-6 bg-[#F6C445]">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="font-display text-black uppercase flex flex-col items-center justify-center mb-10">
+                    <span class="text-3xl md:text-4xl lg:text-5xl tracking-wide mb-4">LET'S SEE WHAT YOU HAVE</span>
+                    <span
+                        class="bg-white px-8 py-3 md:py-4 border-4 border-black text-6xl md:text-8xl lg:text-[7.5rem] leading-none shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">IN
+                        MIND</span>
+                </h2>
+                <a href="https://forms.gle/FRv6WY26vhGmYYKQ6" target="_blank"
+                    class="inline-flex items-center justify-center gap-2 md:gap-3 px-8 py-4 md:px-12 md:py-6 rounded-full font-bold text-lg md:text-2xl border-4 border-black bg-[#1C1C1C] text-white hover:bg-white hover:!text-black hover:scale-105 transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                    Enviar info del proyecto
+                    <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <footer id="contact"
+            class="relative pt-20 pb-8 px-6 bg-[#1C1C1C] text-white border-t-8 border-black overflow-hidden">
+            <div class="max-w-7xl mx-auto flex flex-col relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10">
+                    <div
+                        class="flex flex-col items-center md:items-start text-center md:text-left gap-3 w-full md:w-2/3">
+                        <div class="font-display font-bold text-4xl lg:text-5xl tracking-tight leading-none mb-1">
+                            YOYI<span class="text-yoyi-pink">.</span><span class="text-white">THESTUDIO</span>
+                        </div>
+                        <p class="font-mono text-xs lg:text-sm opacity-80 uppercase tracking-widest text-yoyi-yellow">
+                            Crafted with care ✺</p>
+
+                        <div class="flex gap-6 mt-4 mb-2">
+                            <a href="https://www.instagram.com/yoyi.thestudio/"
+                                class="text-white hover:text-[#F4939D] transition-transform hover:scale-110"
+                                aria-label="Instagram">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/johanadavilab/"
+                                class="text-white hover:text-[#7DC3D1] transition-transform hover:scale-110"
+                                aria-label="LinkedIn">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.behance.net/yoyithestudio"
+                                class="text-white hover:text-[#F6C445] transition-transform hover:scale-110"
+                                aria-label="Behance">
+                                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.908 5.375 5.424H13.6c.094 2.115 1.63 2.76 3.149 2.76 1.44 0 2.502-.628 3.033-1.63h1.944zM17.65 11.233c-.059-1.258-.946-2.036-2.117-2.036-1.138 0-1.921.849-1.996 2.036h4.113zM6.924 12.399c.969-.327 1.83-1.189 1.83-2.739 0-2.822-2.317-3.66-4.81-3.66H0v14h4.168c2.946 0 5.253-1.077 5.253-4.004 0-1.895-1.11-2.996-2.497-3.597zm-3.037-3.83h1.272c1.076 0 1.922.38 1.922 1.558 0 1.155-.861 1.488-1.758 1.488H3.887V8.569zm0 8.441V14.15h1.564c1.235 0 2.193.447 2.193 1.704 0 1.256-1.107 1.156-2.222 1.156H3.887z" />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <a href="mailto:hello.yoyi.studio@gmail.com"
+                            class="font-mono text-sm md:text-base opacity-80 hover:opacity-100 hover:text-yoyi-pink transition-all">hello.yoyi.studio@gmail.com</a>
+
+                        <div class="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 mt-6">
+                            <a href="art.html"
+                                class="font-mono text-sm md:text-base font-bold opacity-80 hover:opacity-100 hover:text-yoyi-green transition-all">Arte
+                                e Ilustración</a>
+                            <a href="audiovisual.html"
+                                class="font-mono text-sm md:text-base font-bold opacity-80 hover:opacity-100 hover:text-yoyi-yellow transition-all">Motion
+                                Design</a>
+                            <a href="branding.html"
+                                class="font-mono text-sm md:text-base font-bold opacity-80 hover:opacity-100 hover:text-yoyi-pink transition-all">Branding</a>
+                            <a href="uxui.html"
+                                class="font-mono text-sm md:text-base font-bold opacity-80 hover:opacity-100 hover:text-yoyi-blue transition-all">Diseño
+                                Web & App</a>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center md:justify-end w-full md:w-1/3 pb-4 md:pb-0">
+                        <img src="../assets/branding/sol-solo.webp" alt="YOYI Sun Logo"
+                            class="w-24 md:w-32 lg:w-40 h-auto drop-shadow-md hover:rotate-12 transition-transform duration-500"
+                            loading="lazy">
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 items-center gap-6 mt-12 md:mt-16 pt-6 border-t border-white/10 relative z-10">
+                    <div class="hidden md:block"></div>
+                    <div class="flex justify-center">
+                        <p class="font-mono opacity-50 text-xs md:text-sm tracking-widest uppercase text-center">© 2026
+                            POR JOHANA DÁVILA — AR</p>
+                    </div>
+                    <div class="flex justify-center md:justify-end">
+                        <a href="#hero"
+                            class="font-mono text-xs text-white/50 hover:text-white transition-all uppercase tracking-widest flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                            </svg>
+                            Volver arriba
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
+    <script src="../script.js"></script>
 </body>
+
 </html>
