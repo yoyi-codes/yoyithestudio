@@ -1,0 +1,13 @@
+# ==========================================================================
+# CONFIGURACIÓN DE REDIRECCIONES DE IDIOMA PARA NETLIFY
+# ==========================================================================
+
+# 1. Si un usuario prefiere español, redirigir la raíz a la sección /es/
+/  /es/index.html  302  Language=es
+
+# 2. Si un usuario prefiere inglés o cualquier otro idioma, redirigir a /en/
+/  /en/index.html  302
+
+# 3. Asegurar que las rutas internas no se rompan ni hagan bucles infinitos
+/es/*  /es/:splat  200
+/en/*  /en/:splat  200
