@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=/es/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Configuración de Favicons -->
     <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
@@ -12,20 +12,29 @@
     <meta name="apple-mobile-web-app-title" content="yoyithestudio" />
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
-    <title>Redirecting...</title>
+    <!-- SEO Internacional: Mapeo de Idioma Cruzado -->
+    <link rel="alternate" hreflang="es" href="https://www.yoyithestudio.com/es/index.html">
+    <link rel="alternate" hreflang="en" href="https://www.yoyithestudio.com/en/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.yoyithestudio.com/es/index.html">
+
+    <title>YOYI.THE STUDIO</title>
+
+    <!-- Script de Redirección Controlada -->
     <script>
         const userLang = navigator.language.slice(0, 2).toLowerCase();
 
         if (userLang === 'es') {
-        window.location.replace('/es/index.html');
+            window.location.replace('/es/index.html');
         } else {
-        window.location.replace('/en/index.html');
+            window.location.replace('/en/index.html');
         }
     </script>
 </head>
 <body>
-    <p>If you are not redirected automatically, choose your language:</p>
-    <a href="/en/index.html" style="margin-right: 15px; color: black; font-weight: bold;">English</a>
-    <a href="/es/index.html" style="color: black; font-weight: bold;">Español</a>
+    <div style="font-family: sans-serif; text-align: center; margin-top: 100px;">
+        <p>If you are not redirected automatically, choose your language / Si no eres redirigido automáticamente, elige tu idioma:</p>
+        <a href="/en/index.html" style="margin-right: 15px; color: black; font-weight: bold; text-decoration: none;">English</a>
+        <a href="/es/index.html" style="color: black; font-weight: bold; text-decoration: none;">Español</a>
+    </div>
 </body>
 </html>
