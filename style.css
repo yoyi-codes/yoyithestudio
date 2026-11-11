@@ -355,6 +355,225 @@ button,
     color: black;
 }
 
+.motion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.motion-card {
+    min-width: 0;
+    scroll-margin-top: 2rem;
+}
+
+.motion-preview {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 2px solid #fff3;
+    border-radius: 1rem;
+    background: #000;
+}
+
+.motion-media,
+.motion-open {
+    position: absolute;
+    inset: 0;
+}
+
+.motion-media :is(video, iframe),
+.motion-dialog-media :is(video, iframe) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 0;
+}
+
+.motion-open {
+    display: grid;
+    place-items: end;
+    padding: .75rem;
+    width: 100%;
+    cursor: zoom-in;
+}
+
+.motion-open span,
+.motion-arrows button,
+.motion-dialog-header button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--yoyi-yellow);
+    color: var(--yoyi-dark);
+    font-size: 1.25rem;
+}
+
+.motion-open:is(:hover, :focus-visible) span {
+    background: var(--yoyi-pink);
+}
+
+.motion-open:focus-visible {
+    outline: 3px solid var(--yoyi-yellow);
+    outline-offset: -4px;
+}
+
+.motion-details {
+    padding-block: 1rem;
+}
+
+.motion-details h2 {
+    font-size: clamp(1rem, 1.8vw, 1.5rem);
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+.motion-track .motion-details h2 {
+    font-size: clamp(.875rem, 1.35vw, 1.125rem);
+}
+
+.motion-details :is(p, div) {
+    text-align: left;
+    justify-content: flex-start;
+}
+
+.motion-details a {
+    display: inline-flex;
+    margin-top: .75rem;
+    padding: .45rem .8rem;
+    border: 1px solid var(--yoyi-yellow);
+    border-radius: 999px;
+    color: var(--yoyi-yellow);
+    font-size: .85rem;
+    text-decoration: none;
+}
+
+.motion-details a:is(:hover, :focus-visible) {
+    background: var(--yoyi-yellow);
+    color: var(--yoyi-dark);
+}
+
+
+.motion-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.motion-vertical {
+    --motion-columns: 1;
+    --motion-gutter: 3.25rem;
+    --motion-gap: 1rem;
+    --motion-card-width: min(220px, calc((100cqw - 2 * var(--motion-gutter) - (var(--motion-columns) - 1) * var(--motion-gap)) / var(--motion-columns)));
+    container-type: inline-size;
+    position: relative;
+    width: 100%;
+    max-width: 66rem;
+    margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+    .motion-vertical { --motion-columns: 2; }
+}
+
+@media (min-width: 1024px) {
+    .motion-vertical { --motion-columns: 4; }
+}
+
+.motion-arrows {
+    position: absolute;
+    z-index: 2;
+    inset-inline: 0;
+    top: calc(1.25rem + var(--motion-card-width) * 8 / 9);
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.motion-arrows button {
+    pointer-events: auto;
+}
+
+.motion-arrows button:is(:hover, :focus-visible) {
+    background: var(--yoyi-pink);
+}
+
+.motion-track {
+    display: flex;
+    overflow-x: auto;
+    width: min(calc(100% - 2 * var(--motion-gutter)), calc(var(--motion-columns) * var(--motion-card-width) + (var(--motion-columns) - 1) * var(--motion-gap)));
+    margin-inline: auto;
+    gap: var(--motion-gap);
+    padding-block: 1.25rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.motion-track .motion-card {
+    flex: 0 0 var(--motion-card-width);
+    scroll-snap-align: start;
+}
+
+.motion-track.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
+}
+
+.motion-track.is-dragging .motion-open {
+    cursor: grabbing;
+}
+
+.motion-track .motion-preview,
+.motion-dialog.is-vertical .motion-dialog-media {
+    aspect-ratio: 9 / 16;
+}
+
+.motion-dialog {
+    margin: auto;
+    width: min(94vw, 1100px, 143dvh);
+    max-height: 94dvh;
+    padding: 1rem;
+    border: 1px solid #fff3;
+    border-radius: 1rem;
+    background: var(--yoyi-dark);
+    color: white;
+}
+
+.motion-dialog.is-vertical {
+    width: min(94vw, 48dvh);
+}
+
+.motion-dialog-media {
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+.motion-dialog::backdrop {
+    background: rgb(0 0 0 / 88%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .motion-dialog[open],
+    .motion-dialog[open]::backdrop {
+        animation: motion-fade-in .25s ease-out;
+    }
+}
+
+@keyframes motion-fade-in {
+    from { opacity: 0; }
+}
+
+@media (max-width: 639px) {
+    .motion-grid { grid-template-columns: 1fr; }
+}
+
 .work-track {
     display: flex;
     gap: 1rem;

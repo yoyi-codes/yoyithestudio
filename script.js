@@ -1,4 +1,82 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const motionDialog = document.querySelector('.motion-dialog');
+    if (motionDialog) {
+        const mediaSlot = motionDialog.querySelector('.motion-dialog-media');
+        const title = motionDialog.querySelector('h2');
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        document.querySelectorAll('.motion-open').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.motion-card');
+                const player = card.querySelector('video, iframe').cloneNode(true);
+                title.textContent = card.querySelector('h2').textContent.trim();
+                motionDialog.classList.toggle('is-vertical', Boolean(card.closest('.motion-track')));
+                if (player instanceof HTMLVideoElement) {
+                    player.controls = true;
+                    player.muted = false;
+                }
+                mediaSlot.replaceChildren(player);
+                motionDialog.showModal();
+            });
+        });
+        motionDialog.addEventListener('close', () => mediaSlot.replaceChildren());
+        motionDialog.addEventListener('click', event => {
+            if (event.target === motionDialog) {
+                const bounds = motionDialog.getBoundingClientRect();
+                if (event.clientX < bounds.left || event.clientX > bounds.right
+                    || event.clientY < bounds.top || event.clientY > bounds.bottom) motionDialog.close();
+            }
+        });
+
+        const track = document.querySelector('.motion-track');
+        const cards = Array.from(track.children);
+        const cardStep = () => cards[1].offsetLeft - cards[0].offsetLeft;
+
+        document.querySelectorAll('[data-motion-step]').forEach(button => {
+            button.addEventListener('click', () => {
+                track.scrollBy({ left: cardStep() * Number(button.dataset.motionStep), behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+            });
+        });
+
+        let dragStart;
+        let startScroll;
+        let dragged = false;
+        track.addEventListener('pointerdown', event => {
+            dragged = false;
+            if (event.pointerType !== 'mouse' || event.button !== 0 || event.target.closest('a')) return;
+            dragStart = event.clientX;
+            startScroll = track.scrollLeft;
+        });
+        track.addEventListener('pointermove', event => {
+            if (dragStart === undefined || !event.buttons) return;
+            const distance = event.clientX - dragStart;
+            if (!dragged && Math.abs(distance) < 6) return;
+            if (!dragged) track.setPointerCapture(event.pointerId);
+            dragged = true;
+            track.classList.add('is-dragging');
+            track.scrollTo({ left: startScroll - distance, behavior: 'instant' });
+        });
+        const stopDrag = () => {
+            dragStart = undefined;
+            if (!track.classList.contains('is-dragging')) return;
+            const step = cardStep();
+            const left = Math.round(track.scrollLeft / step) * step;
+            track.classList.remove('is-dragging');
+            track.scrollTo({ left, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+        };
+        track.addEventListener('pointerup', stopDrag);
+        track.addEventListener('pointercancel', stopDrag);
+        track.addEventListener('pointerleave', () => {
+            if (!dragged) stopDrag();
+        });
+        track.addEventListener('click', event => {
+            if (dragged && event.detail) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            dragged = false;
+        }, true);
+    }
+
     const carousel = document.querySelector('.work-carousel');
     if (carousel) {
         const track = carousel.querySelector('.work-track');
