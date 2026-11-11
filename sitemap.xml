@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://www.yoyithestudio.com/en/index.html</loc>
-        <priority>1.00</priority>
+        <loc>https://yoyithestudio.com/</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/es/index.html</loc>
-        <priority>1.00</priority>
+        <loc>https://yoyithestudio.com/en/</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/en/art.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/es/</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/es/art.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/en/art.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/en/audiovisual.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/es/art.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/es/audiovisual.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/en/audiovisual.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/en/branding.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/es/audiovisual.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/es/branding.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/en/branding.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/en/uxui.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/es/branding.html</loc>
     </url>
     <url>
-        <loc>https://www.yoyithestudio.com/es/uxui.html</loc>
-        <priority>0.80</priority>
+        <loc>https://yoyithestudio.com/en/uxui.html</loc>
+    </url>
+    <url>
+        <loc>https://yoyithestudio.com/es/uxui.html</loc>
     </url>
 </urlset>

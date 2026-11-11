@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    /*  ==========================================================================
+    /* ==========================================================================
         1. VARIABLES GLOBALES Y NAVEGACIÓN MÓVIL
         ========================================================================== */
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -10,15 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const appWrapper = document.getElementById('app-wrapper');
     const marqueeContainer = document.querySelector('.marquee-container');
 
-    // NUEVO: Seleccionamos el nuevo botón del Hero para móviles
     const mobileViewProjectsBtn = document.getElementById('mobileViewProjectsBtn');
 
-    // Menú móvil
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
     }
 
-    // NUEVO: Le decimos al nuevo botón que también abra el menú
     if (mobileViewProjectsBtn && mobileMenu) {
         mobileViewProjectsBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
     }
@@ -27,10 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMobileMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
     }
     document.querySelectorAll('.mobile-nav-link').forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.remove('active'));    
+        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
     });
 
-    // Efecto "PLOP" para el logo
     if (logo) {
         logo.addEventListener('mouseenter', () => {
             logo.animate([{
@@ -58,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /*  ==========================================================================
-        2. REVEAL AL HACER SCROLL (Aparecer suavemente)
+    /* ==========================================================================
+        2. REVEAL AL HACER SCROLL
         ========================================================================== */
     const revealOnScroll = () => {
         const reveals = document.querySelectorAll('.reveal');
@@ -75,10 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (appWrapper) {
         appWrapper.addEventListener('scroll', revealOnScroll);
     }
-    revealOnScroll(); // Ejecutar al cargar
+    revealOnScroll();
 
-    /*  ==========================================================================
-        3. MARQUEE INTERACTIVO (HOME)
+    /* ==========================================================================
+        3. MARQUEE INTERACTIVO
         ========================================================================== */
     if (marqueeContainer) {
         marqueeContainer.addEventListener('mouseenter', () => {
@@ -99,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /*  ==========================================================================
-        4. TARJETAS ARRASTRABLES / DRAG AND DROP (HOME)
+    /* ==========================================================================
+        4. TARJETAS ARRASTRABLES / DRAG AND DROP
         ========================================================================== */
     const sortableCards = document.getElementById('sortable-cards');
     if (sortableCards && typeof Sortable !== 'undefined') {
@@ -118,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Evitar clic accidental al arrastrar
         const projectLinks = document.querySelectorAll('.project-card');
         projectLinks.forEach(link => {
             link.addEventListener('click', function (e) {
@@ -130,56 +125,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-   5. INSIDE YOYI'S MIND - ELEMENTOS FLOTANTES (HOME)
-   ========================================================================== */
+       5. INSIDE YOYI'S MIND 
+       ========================================================================== */
+    const currentLang = document.documentElement.lang;
 
-// 1. Detectamos el idioma actual leyendo la etiqueta <html> del documento
-const currentLang = document.documentElement.lang;
+    const mindItems = [{
+            name: currentLang === 'es' ? 'Auriculares Marshall' : 'Marshall Headphones',
+            img: '../assets/branding/auriculares-item.webp',
+            x: -380,
+            y: -180
+        },
+        {
+            name: currentLang === 'es' ? 'Vestidos largos y coloridos' : 'Colorful maxi dresses',
+            img: '../assets/branding/vestidoamarillo-item.webp',
+            x: 450,
+            y: -180
+        },
+        {
+            name: currentLang === 'es' ? 'Frutas Tropicales' : 'Tropical Fruits',
+            img: '../assets/branding/frutas-item.webp',
+            x: -450,
+            y: 100
+        },
+        {
+            name: currentLang === 'es' ? 'Armar Playlists en Spotify' : 'Creating Spotify Playlists',
+            img: '../assets/branding/laptop-item.webp',
+            x: 400,
+            y: 120,
+            large: true
+        },
+        {
+            name: currentLang === 'es' ? 'Andar en rollers' : 'Rollerskating',
+            img: '../assets/branding/rioroller-item.webp',
+            x: -180,
+            y: -380
+        },
+        {
+            name: currentLang === 'es' ? 'Acumular nike dunks' : 'Nike Dunk Low Enthusiast',
+            img: '../assets/branding/shoe1-item.webp',
+            x: 200,
+            y: -380
+        }
+    ];
 
-// 2. Definimos los elementos usando una condición rápida para el nombre
-const mindItems = [
-    {
-        name: currentLang === 'es' ? 'Auriculares Marshall' : 'Marshall Headphones',
-        img: '../assets/branding/auriculares-item.webp',
-        x: -380,
-        y: -180
-    },
-    {
-        name: currentLang === 'es' ? 'Vestidos largos y coloridos' : 'Colorful maxi dresses',
-        img: '../assets/branding/vestidoamarillo-item.webp',
-        x: 450,
-        y: -180
-    },
-    {
-        name: currentLang === 'es' ? 'Frutas Tropicales' : 'Tropical Fruits',
-        img: '../assets/branding/frutas-item.webp',
-        x: -450,
-        y: 100
-    },
-    {
-        name: currentLang === 'es' ? 'Armar Playlists en Spotify' : 'Creating Spotify Playlists',
-        img: '../assets/branding/laptop-item.webp',
-        x: 400,
-        y: 120,
-        large: true
-    },
-    {
-        name: currentLang === 'es' ? 'Andar en rollers' : 'Rollerskating',
-        img: '../assets/branding/rioroller-item.webp',
-        x: -180,
-        y: -380
-    },
-    {
-        name: currentLang === 'es' ? 'Acumular nike dunks' : 'Nike Dunk Low Enthusiast',
-        img: '../assets/branding/shoe1-item.webp',
-        x: 200,
-        y: -380
-    }
-];
-
-const headTrigger = document.getElementById('yoyi-head-trigger');
-const floatingContainer = document.getElementById('floating-items');
-let mindIsOpen = false;
+    const headTrigger = document.getElementById('yoyi-head-trigger');
+    const floatingContainer = document.getElementById('floating-items');
+    let mindIsOpen = false;
 
     if (headTrigger && floatingContainer) {
         const clickLabel = document.createElement('div');
@@ -230,8 +221,8 @@ let mindIsOpen = false;
         }
     }
 
-    /*  ==========================================================================
-        6. AUDIOVISUAL - REPRODUCTOR CON CLICK (AUDIOVISUAL)
+    /* ==========================================================================
+        6. AUDIOVISUAL - REPRODUCTOR CON CLICK
         ========================================================================== */
     const videoWrappers = document.querySelectorAll('.video-wrapper');
     if (videoWrappers.length > 0) {
@@ -254,8 +245,8 @@ let mindIsOpen = false;
         });
     }
 
-    /*  ==========================================================================
-        7. BRANDING - NAVEGACIÓN ENTRE GRILLA Y DETALLES (BRANDING)
+    /* ==========================================================================
+        7. BRANDING - NAVEGACIÓN
         ========================================================================== */
     const gridView = document.getElementById('projects-grid');
     const detailsContainer = document.getElementById('project-details-container');
@@ -287,8 +278,8 @@ let mindIsOpen = false;
         });
     }
 
-    /*  ==========================================================================
-        8. ART - MODAL/OVERLAY DE IMÁGENES Y VIDEOS (ART)
+    /* ==========================================================================
+        8. ART - MODAL
         ========================================================================== */
     const artCards = document.querySelectorAll('.art-card');
     const artOverlay = document.getElementById('art-overlay');
@@ -304,14 +295,12 @@ let mindIsOpen = false;
 
                 if (overlayTitle) overlayTitle.textContent = title;
 
-                // 1. Ocultar ambos elementos por defecto por seguridad
                 if (overlayImg) overlayImg.classList.add('hidden');
                 if (overlayVideo) {
                     overlayVideo.classList.add('hidden');
                     overlayVideo.pause();
                 }
 
-                // 2. Mostrar solo el que corresponde
                 if (mediaElement) {
                     if (mediaElement.tagName === 'VIDEO') {
                         if (overlayVideo) {
@@ -327,13 +316,11 @@ let mindIsOpen = false;
                     }
                 }
 
-                // 3. Abrir la pantalla oscura
                 artOverlay.classList.remove('opacity-0', 'pointer-events-none');
                 artOverlay.classList.add('opacity-100', 'pointer-events-auto');
             });
         });
 
-        // 4. Lógica para cerrar la pantalla oscura
         artOverlay.addEventListener('click', () => {
             artOverlay.classList.remove('opacity-100', 'pointer-events-auto');
             artOverlay.classList.add('opacity-0', 'pointer-events-none');
@@ -341,8 +328,8 @@ let mindIsOpen = false;
         });
     }
 
-    /*  ==========================================================================
-        9. P5.JS - EYEBALL BUDDY (EL OJITO DEL FOOTER)
+    /* ==========================================================================
+        9. P5.JS - EYEBALL BUDDY
         ========================================================================== */
     if (document.getElementById('eyeball-buddy-container') && typeof p5 !== 'undefined') {
         new p5(function (p) {
@@ -413,8 +400,75 @@ let mindIsOpen = false;
         });
     }
 
-    /*  ==========================================================================
-        10. NUEVO: LIGHTBOX GENÉRICO (Para Storyboards y otros detalles)
+    /* ==========================================================================
+        10. P5.JS - FONDO 3D BLURRY PARA EL HERO (INDEX)
+        ========================================================================== */
+    if (document.getElementById('p5-bg-container') && typeof p5 !== 'undefined') {
+        new p5(function (p) {
+            let shapes = [];
+            const palette = ['#F4939D', '#F6C445', '#538F50', '#7DC3D1'];
+
+            p.setup = function () {
+                let cnv = p.createCanvas(p.windowWidth, p.windowHeight, p.WEBGL);
+                cnv.parent('p5-bg-container');
+                p.noStroke();
+
+                for (let i = 0; i < 6; i++) {
+                    shapes.push({
+                        type: p.random(['sphere', 'box', 'torus', 'cone']),
+                        x: p.random(-p.width / 2, p.width / 2),
+                        y: p.random(-p.height / 2, p.height / 2),
+                        z: p.random(-200, 100),
+                        rx: p.random(p.TWO_PI),
+                        ry: p.random(p.TWO_PI),
+                        speedX: p.random(-0.5, 0.5),
+                        speedY: p.random(-0.5, 0.5),
+                        rotSpeedX: p.random(-0.01, 0.01),
+                        rotSpeedY: p.random(-0.01, 0.01),
+                        color: p.color(p.random(palette))
+                    });
+                }
+            };
+
+            p.draw = function () {
+                p.clear();
+
+                p.ambientLight(150);
+                p.directionalLight(255, 255, 255, 0.5, 0.5, -1);
+
+                for (let s of shapes) {
+                    p.push();
+                    p.translate(s.x, s.y, s.z);
+                    p.rotateX(s.rx);
+                    p.rotateY(s.ry);
+
+                    p.ambientMaterial(s.color);
+
+                    if (s.type === 'sphere') p.sphere(120);
+                    else if (s.type === 'box') p.box(160);
+                    else if (s.type === 'torus') p.torus(100, 40);
+                    else if (s.type === 'cone') p.cone(100, 150);
+
+                    p.pop();
+
+                    s.x += s.speedX;
+                    s.y += s.speedY;
+                    s.rx += s.rotSpeedX;
+                    s.ry += s.rotSpeedY;
+
+                    if (s.x < -p.width / 1.5 || s.x > p.width / 1.5) s.speedX *= -1;
+                    if (s.y < -p.height / 1.5 || s.y > p.height / 1.5) s.speedY *= -1;
+                }
+            };
+
+            p.windowResized = function () {
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+            };
+        });
+    }
+
+    /* ==========================================================================
+        11. NUEVO: LIGHTBOX GENÉRICO 
         ========================================================================== */
     const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
     const avOverlay = document.getElementById('audiovisual-overlay');
@@ -440,16 +494,15 @@ let mindIsOpen = false;
 
 });
 
-/*  ==========================================================================
-    11. LOAD MORE ART (LÓGICA PARA MÓVILES/TABLETS)
+/* ==========================================================================
+    12. LOAD MORE ART
     ========================================================================== */
 const artItems = document.querySelectorAll('.art-card');
 const loadMoreBtn = document.getElementById('loadMoreArtBtn');
-let currentItemsToShow = 4; // Empezamos mostrando 4
+let currentItemsToShow = 4;
 
 if (loadMoreBtn && artItems.length > 0) {
     const updateArtVisibility = () => {
-        // Si estamos en pantallas menores a 1024px (Móvil y Tablet)
         if (window.innerWidth < 1024) {
             artItems.forEach((item, index) => {
                 if (index >= currentItemsToShow) {
@@ -459,32 +512,28 @@ if (loadMoreBtn && artItems.length > 0) {
                 }
             });
 
-            // Ocultar el botón si ya mostramos todas las ilustraciones
             if (currentItemsToShow >= artItems.length) {
                 loadMoreBtn.style.display = 'none';
             } else {
                 loadMoreBtn.style.display = 'block';
             }
         } else {
-            // En Desktop (1024px o más) mostramos siempre todo sin botón
             artItems.forEach(item => item.style.display = 'flex');
             loadMoreBtn.style.display = 'none';
         }
     };
 
-    // Ejecutamos al cargar la página y al cambiar el tamaño de la ventana
     updateArtVisibility();
     window.addEventListener('resize', updateArtVisibility);
 
-    // Al hacer clic en "Load More", sumamos 4 ilustraciones más
     loadMoreBtn.addEventListener('click', () => {
         currentItemsToShow += 4;
         updateArtVisibility();
     });
 }
 
-/*  ==========================================================================
-    12. LOAD MORE BRANDING (LÓGICA PARA MÓVILES/TABLETS)
+/* ==========================================================================
+    13. LOAD MORE BRANDING
     ========================================================================== */
 const brandingItems = document.querySelectorAll('.project-card-item');
 const loadMoreBrandingBtn = document.getElementById('loadMoreBrandingBtn');
@@ -521,18 +570,15 @@ if (loadMoreBrandingBtn && brandingItems.length > 0) {
     });
 }
 
-/*  ==========================================================================
-    13. CAMBIO DE IDIOMA GENÉRICO (LANGUAGE SWITCHER)
+/* ==========================================================================
+    14. CAMBIO DE IDIOMA GENÉRICO (LANGUAGE SWITCHER)
     ========================================================================== */
-    // Esta función toma el idioma deseado ('en' o 'es') y cambia la URL actual
-    window.switchLanguage = function(newLang) {
-        // Obtenemos la ruta actual (Ej: /en/uxui.html o /es/art.html)
-        const currentPath = window.location.pathname;
-        // Comportamiento normal (ej. cuando cambian de ES a EN)
-        if (currentPath.includes('/en/') || currentPath.includes('/es/')) {
-            const newPath = currentPath.replace(/\/(en|es)\//, `/${newLang}/`);
-            window.location.href = newPath;
-        } else {
-            window.location.href = `/${newLang}/index.html`;
-        }
-    };
+window.switchLanguage = function (newLang) {
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('/en/') || currentPath.includes('/es/')) {
+        const newPath = currentPath.replace(/\/(en|es)\//, `/${newLang}/`);
+        window.location.href = newPath;
+    } else {
+        window.location.href = `/${newLang}/`;
+    }
+};

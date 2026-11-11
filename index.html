@@ -13,28 +13,20 @@
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
 
     <!-- SEO Internacional: Mapeo de Idioma Cruzado -->
-    <link rel="alternate" hreflang="es" href="https://www.yoyithestudio.com/es/index.html">
-    <link rel="alternate" hreflang="en" href="https://www.yoyithestudio.com/en/index.html">
-    <link rel="alternate" hreflang="x-default" href="https://www.yoyithestudio.com/es/index.html">
+    <link rel="canonical" href="https://yoyithestudio.com/">
+    <link rel="alternate" hreflang="es" href="https://yoyithestudio.com/es/">
+    <link rel="alternate" hreflang="en" href="https://yoyithestudio.com/en/">
+    <link rel="alternate" hreflang="x-default" href="https://yoyithestudio.com/">
 
-    <title>YOYI.THE STUDIO</title>
-
-    <!-- Script de Redirección Controlada -->
-    <script>
-        const userLang = navigator.language.slice(0, 2).toLowerCase();
-
-        if (userLang === 'es') {
-            window.location.replace('/es/index.html');
-        } else {
-            window.location.replace('/en/index.html');
-        }
-    </script>
+    <title>YOYI.THE STUDIO | Portfolio de Johana Dávila</title>
+    <meta name="description" content="Portfolio de diseño multimedia de Johana Dávila. Disponible en español e inglés.">
 </head>
 <body>
     <div style="font-family: sans-serif; text-align: center; margin-top: 100px;">
-        <p>If you are not redirected automatically, choose your language / Si no eres redirigido automáticamente, elige tu idioma:</p>
-        <a href="/en/index.html" style="margin-right: 15px; color: black; font-weight: bold; text-decoration: none;">English</a>
-        <a href="/es/index.html" style="color: black; font-weight: bold; text-decoration: none;">Español</a>
+        <h1>YOYI.THE STUDIO</h1>
+        <p>Elegí tu idioma / <span lang="en">Choose your language</span></p>
+        <a href="/en/" lang="en" style="margin-right: 15px; color: black; font-weight: bold;">English</a>
+        <a href="/es/" style="color: black; font-weight: bold;">Español</a>
     </div>
 </body>
 </html>

@@ -20,12 +20,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/style.css">
     
-    <script>
-        // Enrutador lógico por JS: Si la URL rota pertenece al segmento español, redirige directo al home de español
-        if (window.location.pathname.startsWith('/es/')) {
-            window.location.replace('/es/index.html');
-        }
-    </script>
 </head>
 <body class="bg-[#1C1C1C] h-screen flex flex-col items-center justify-center px-6 overflow-hidden relative">
 
@@ -46,7 +40,7 @@
         </p>
         
         <!-- Botón para regresar al inicio por defecto (inglés) -->
-        <a href="/en/index.html" class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
+        <a href="/en/" class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
             Take me Home ✺
         </a>
     </div>

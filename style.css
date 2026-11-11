@@ -274,7 +274,7 @@ h3,
     position: absolute;
     top: 50%;
     left: -25px;
-    /* Ajuste proporcional */ 
+    /* Ajuste proporcional */
     transform-origin: left center;
     transform: scale(0.5) translateY(-50%);
     /* Escala al 50% mágicamente en móvil */
@@ -289,21 +289,24 @@ h3,
    ========================================= */
 @media (max-width: 767px) {
     .wavy-container {
-        height: 155px; /* Reduce el marco a la mitad */
-        
+        height: 155px;
+        /* Reduce el marco a la mitad */
+
         /* AQUÍ PUEDES JUGAR CON ESTOS NÚMEROS A TU GUSTO */
-        margin-top: -40px;     /* Sube o baja la tira respecto a la sección negra */
-        margin-bottom: -30px;  /* Sube o baja la sección clara de abajo */
-    } 
+        margin-top: -40px;
+        /* Sube o baja la tira respecto a la sección negra */
+        margin-bottom: -30px;
+        /* Sube o baja la sección clara de abajo */
+    }
 
     .wavy-svg {
         /* Encogemos el SVG a la mitad (scale 0.5) para que no se corte feo */
-        left: -25px; 
+        left: -25px;
         transform-origin: left center;
-        transform: scale(0.5) translateY(-50%); 
-        
+        transform: scale(0.5) translateY(-50%);
+
         /* Mantenemos el height original interno para que no se deforme al escalar */
-        height: 160px; 
+        height: 160px;
     }
 }
 
@@ -852,8 +855,15 @@ h3,
    ANIMACIÓN WIGGLE (THINGS THAT MAKE ME, ME)
    ========================================= */
 @keyframes wiggle-me {
-    0%, 100% { transform: rotate(-4deg) scale(1); }
-    50% { transform: rotate(4deg) scale(1.08); }
+
+    0%,
+    100% {
+        transform: rotate(-4deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(4deg) scale(1.08);
+    }
 }
 
 .animate-wiggle {
@@ -932,4 +942,35 @@ h3,
         background: var(--yoyi-pink);
         border-radius: 10px;
     }
+}
+
+/* =========================================
+   EFECTO GLASSMORPHISM PARA "CRAFTED WITH CARE"
+   ========================================= */
+.glass-text-hover {
+    color: #FFF8F0 !important;
+    /* Blanco crema */
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Sombra inicial muy sutil para separarlo del fondo negro */
+    text-shadow: 0 4px 10px rgba(255, 248, 240, 0.1);
+}
+
+.glass-text-hover:hover {
+    transform: translateY(-8px) scale(1.03);
+    /* Efecto Glass/Glow: Combina sombras blancas translúcidas */
+    text-shadow: 0 15px 30px rgba(255, 248, 240, 0.4),
+        0 -2px 10px rgba(255, 248, 240, 0.2);
+    letter-spacing: 0.02em;
+    /* Se separa un poquito */
+}
+
+/* =========================================
+   CONTENEDOR DEL FONDO 3D P5.JS
+   ========================================= */
+#p5-bg-container {
+    filter: blur(8px); /* Bajamos de 60px a 8px para que la forma sea perceptible */
+    opacity: 0.9; /* Subimos la opacidad para que los colores del logo resalten */
+}
+#p5-bg-container canvas {
+    display: block;
 }
