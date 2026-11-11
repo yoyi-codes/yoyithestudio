@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500&family=Unbounded:wght@700;800;900&display=swap');
+
 /* =========================================
    FIX GLOBAL: SCROLLBARS Y DESBORDAMIENTO
    ========================================= */
@@ -23,28 +25,11 @@ body {
 }
 
 /* =========================================
-    1. TIPOGRAFÍAS LOCALES 
-   ========================================= */
-@font-face {
-    font-family: 'ArchivoBlack';
-    src: url('assets/tipografias/ArchivoBlack-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'DMMono';
-    src: url('assets/tipografias/DMMono-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* =========================================
     2. COLORES OFICIALES YOYI BRAND GUIDE
    ========================================= */
 :root {
+    --font-display: 'Unbounded', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
     --primary-bg: #FFF8F0;
     --yoyi-yellow: #F6C445;
     --yoyi-green: #538F50;
@@ -88,19 +73,51 @@ body {
 }
 
 body {
-    font-family: 'DMMono', monospace;
+    font-family: var(--font-body);
     background-color: var(--yoyi-dark);
-    color: white;
+    color: #E2E2E2;
 }
 
 h1,
 h2,
 h3,
+.hero-title,
+.title-display,
 .font-display {
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: var(--font-display);
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.02em;
     color: white;
+}
+
+h1,
+.hero-title,
+.title-display {
+    line-height: 1.1;
+}
+
+p,
+p.font-mono,
+.bio-text,
+.description {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.65;
+    letter-spacing: 0.01em;
+}
+
+button,
+.btn,
+.btn-pill,
+.badge,
+.nav-pill {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
 }
 
 /* =========================================
@@ -142,12 +159,8 @@ h3,
 }
 
 .nav-pill {
-    font-family: 'DMMono', monospace !important;
-    font-weight: bold;
-    text-transform: uppercase;
     text-decoration: none;
     color: #1C1C1C !important;
-    font-size: 1.1rem;
     padding: 10px 25px;
     border-radius: 50px;
     transition: all 0.3s ease;
@@ -342,8 +355,143 @@ h3,
     color: black;
 }
 
+.work-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    text-align: left;
+}
+
+.work-slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+}
+
+.work-slide:last-child {
+    scroll-snap-align: end;
+}
+
+.work-cover,
+.work-video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 1rem;
+}
+
+.work-cover {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: var(--yoyi-dark);
+    border: 1px solid var(--yoyi-pink);
+    color: #fff;
+    font: 800 clamp(1.15rem, 4vw, 3rem)/1.15 var(--font-display);
+    text-align: center;
+}
+
+.work-cover:is(:hover, :focus-visible),
+.work-project a {
+    color: var(--yoyi-yellow);
+}
+
+.work-slide p,
+.work-project p {
+    margin-block: .5rem;
+}
+
+.work-controls:not([hidden]) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .5rem;
+}
+
+.work-controls button {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
+    background: var(--yoyi-yellow);
+    color: var(--yoyi-dark);
+}
+
+.work-controls [data-direction] {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(calc(-50% - 26px));
+    font-size: 1.35rem;
+    box-shadow: 0 3px 12px #0008;
+}
+
+.work-controls [data-direction="-1"] { left: -.75rem; }
+.work-controls [data-direction="1"] { right: -.75rem; }
+
+.work-dots {
+    display: flex;
+}
+
+.work-dots button {
+    min-width: 26px;
+    background: transparent;
+    display: grid;
+    place-items: center;
+}
+
+.work-dots button::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    border: 1px solid white;
+    border-radius: 50%;
+}
+
+.work-dots button[aria-current="true"]::before {
+    background: var(--yoyi-yellow);
+    border-color: var(--yoyi-yellow);
+}
+
+.work-controls .work-toggle {
+    background: transparent;
+    color: white;
+}
+
+.work-toggle[aria-pressed="true"] {
+    background: white;
+    color: var(--yoyi-dark);
+}
+
+.hero-about.text-white:is(:hover, :focus-visible) {
+    background: white;
+    color: var(--yoyi-dark) !important;
+}
+
+@media (max-width: 767px) {
+    #projects:target {
+        display: block;
+        padding-block: 4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .work-toggle { display: none; }
+}
+
+.work-project {
+    padding: 1.25rem;
+    border: 1px solid var(--yoyi-pink);
+    border-radius: 1rem;
+}
+
+.work-project a {
+    text-decoration: underline;
+}
+
 .video-caption {
-    font-family: 'DMMono', monospace;
+    font-family: var(--font-body);
     font-size: 0.8rem;
     color: white;
     opacity: 0.6;
@@ -380,7 +528,7 @@ h3,
     display: inline-block;
     align-self: flex-start;
     color: white;
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: var(--font-display);
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -390,10 +538,93 @@ h3,
 }
 
 .about-text {
-    font-family: 'DMMono', monospace;
+    font-family: var(--font-body);
+    font-weight: 400;
     font-size: 1rem;
-    line-height: 1.8;
+    line-height: 1.65;
     color: #1C1C1C;
+}
+
+.bio-poster {
+    --tab-left: 42.6%;
+    --tab-right: 51.5%;
+    --tab-top: 74.9%;
+    transform-origin: 50% 8%;
+    cursor: pointer;
+    filter: drop-shadow(0 12px 14px rgb(0 0 0 / 20%));
+}
+
+.bio-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.bio-poster img:first-child {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, var(--tab-right) 100%,
+        var(--tab-right) var(--tab-top), var(--tab-left) var(--tab-top),
+        var(--tab-left) 100%, 0 100%);
+}
+
+.bio-poster-tab {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    clip-path: inset(var(--tab-top) calc(100% - var(--tab-right)) 0 var(--tab-left));
+    transform-origin: 47% var(--tab-top);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .bio-poster {
+        animation: bio-poster-nudge 6s ease-in-out infinite;
+    }
+
+    .bio-poster:is(:hover, :focus) {
+        animation: bio-poster-wiggle .45s ease;
+    }
+
+    .bio-poster:is(:hover, :focus) .bio-poster-tab {
+        animation: bio-poster-drop 1.65s ease both;
+    }
+}
+
+@keyframes bio-poster-nudge {
+    0%, 82%, 96%, 100% { transform: rotate(0); }
+    86% { transform: rotate(-1.5deg); }
+    91% { transform: rotate(1deg); }
+}
+
+@keyframes bio-poster-wiggle {
+    30% { transform: rotate(-2deg); }
+    65% { transform: rotate(1.5deg); }
+}
+
+@keyframes bio-poster-drop {
+    12% { transform: translateY(0) rotate(0); }
+    28% { transform: translateY(2%) rotate(-7deg); }
+    63% { transform: translate(3%, 26%) rotate(-24deg); opacity: 0; }
+    64%, 80% { transform: none; opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media (min-width: 1024px) {
+    .bio-poster {
+        width: 108%;
+        max-width: none;
+        margin-left: -4%;
+    }
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll.reveal-pending {
+        transition: opacity .7s cubic-bezier(.16, 1, .3, 1),
+            transform .7s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .reveal-on-scroll.reveal-pending:not(.is-visible, :focus-within) {
+        opacity: 0;
+        transform: translateY(24px);
+    }
 }
 
 .about-text--lead {
@@ -409,7 +640,7 @@ h3,
 }
 
 .about-quote {
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: var(--font-display);
     font-size: 1.1rem;
     color: #1C1C1C;
     border-left: 5px solid var(--yoyi-yellow);
@@ -425,6 +656,68 @@ h3,
     perspective: 1500px;
     height: 850px;
     margin-top: 140px;
+}
+
+.mind-words {
+    position: absolute;
+    inset: 8% 0;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    pointer-events: none;
+    font: 800 clamp(1.35rem, 2.5vw, 3rem)/1.1 var(--font-display);
+    letter-spacing: -.06em;
+    text-transform: uppercase;
+    transition: opacity .45s ease, visibility .45s;
+}
+
+.mind-container:has(#yoyi-head-trigger.is-open) .mind-words {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.mind-container:has(#yoyi-head-trigger.is-open) .mind-words > div > div {
+    pointer-events: none;
+}
+
+.mind-words > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px minmax(0, 1fr);
+}
+
+.mind-words > div > div {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: .35em;
+    pointer-events: auto;
+}
+
+.mind-words > div > div:last-child {
+    grid-column: 3;
+}
+
+.mind-words b {
+    color: var(--yoyi-yellow);
+    font: .6em/1 sans-serif;
+}
+
+.mind-words > div:nth-child(2) b { color: var(--yoyi-pink); }
+.mind-words > div:nth-child(3) b { color: var(--yoyi-blue); }
+.mind-words > div:nth-child(4) b { color: var(--yoyi-green); }
+
+.mind-words span {
+    opacity: 0;
+    transition: opacity .45s ease;
+}
+
+.mind-words :is(:hover, :focus) > span {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mind-words,
+    .mind-words span { transition: none; }
 }
 
 #yoyi-head-trigger img[alt="Yoyi Base"] {
@@ -472,7 +765,7 @@ h3,
 .mind-item .item-title {
     background-color: var(--yoyi-yellow);
     color: #1C1C1C;
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: var(--font-display);
     font-size: 0.92rem;
     padding: 8px 18px;
     border: 3px solid #1C1C1C;
@@ -515,7 +808,7 @@ h3,
     transform: translateX(-50%);
     background-color: var(--yoyi-pink);
     color: #1C1C1C;
-    font-family: 'ArchivoBlack', sans-serif;
+    font-family: var(--font-display);
     font-size: 2rem;
     padding: 8px 20px;
     border: 3px solid #1C1C1C;

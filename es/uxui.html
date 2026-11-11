@@ -55,10 +55,6 @@
     </script>
 
     <!-- Pre-carga de tipografías críticas -->
-    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
-        crossorigin="anonymous">
-    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
-        crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg" />
@@ -87,7 +83,7 @@
                 </a>
 
                 <div class="hidden lg:flex items-center gap-4">
-                    <a href="/es/#projects" class="nav-pill">← Volver al inicio</a>
+                    <a href="/es/#projects" class="nav-pill">← Volver a proyectos destacados</a>
 
                     <!-- Language Switcher (Desktop) -->
                     <div class="flex items-center gap-2 ml-2 pl-4 border-l-2 border-black/20">
@@ -122,7 +118,7 @@
                 </svg>
             </button>
 
-            <a href="/es/" class="mobile-nav-link font-display text-2xl text-white mb-4">← Volver al inicio</a>
+            <a href="/es/#projects" class="mobile-nav-link font-display text-2xl text-white mb-4">← Volver a proyectos destacados</a>
             <div class="w-16 border-t-2 border-white/20 my-2"></div>
 
             <a href="art.html"
@@ -174,6 +170,53 @@
         </header>
 
         <main class="py-24 px-6 max-w-7xl mx-auto min-h-screen relative flex flex-col gap-20 md:gap-32">
+            <article id="atelier-dj" class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-7/12 rounded-xl overflow-hidden border-8 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                    <video src="../assets/ux-ui/atelier-scroll.mp4" class="block w-full h-auto" controls muted playsinline preload="metadata" aria-label="Recorrido por Atelier D&amp;J"></video>
+                </div>
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-green">Atelier D&amp;J</h2>
+                    <p class="text-white/80 mb-6">Sitio web de un estudio creativo que presenta proyectos de diseño y motion a través de una interfaz responsiva con elementos 3D.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">p5.js</span>
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">HTML/CSS</span>
+                    </div>
+                    <a class="text-yoyi-yellow underline font-semibold" href="https://github.com/yoyi-codes/atelierdyj">Ver en GitHub</a>
+                </div>
+            </article>
+
+            <article id="blissed" class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="w-full lg:w-7/12 rounded-xl overflow-hidden border-8 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                    <video src="../assets/ux-ui/blissed-scroll.mp4" class="block w-full h-auto" controls muted playsinline preload="metadata" aria-label="Recorrido de escritorio por BLISSED"></video>
+                </div>
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-pink">BLISSED</h2>
+                    <p class="text-white/80 mb-6">Revista editorial responsiva de diseño propio, construida con WordPress. Reúne historias de moda y cultura urbana en una experiencia de lectura para escritorio y móvil.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">WordPress</span>
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">Diseño editorial</span>
+                    </div>
+                    <a class="text-yoyi-yellow underline font-semibold" href="https://github.com/yoyi-codes/blissed">Ver en GitHub</a>
+                </div>
+            </article>
+
+            <article id="saltadilla" class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-7/12 rounded-xl overflow-hidden border-8 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)]">
+                    <video src="../assets/ux-ui/saltadilla-preview.mp4" class="block w-full h-auto" controls muted playsinline preload="metadata" aria-label="Demostración de Línea directa a Saltadilla"></video>
+                </div>
+                <div class="w-full lg:w-5/12 text-white">
+                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-blue">Línea directa a Saltadilla</h2>
+                    <p class="text-white/80 mb-6">Escena 3D interactiva inspirada en Las Chicas Superpoderosas. El teléfono de Saltadilla responde a la interacción y la escena permite explorar el ambiente en modo día y noche.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">Three.js</span>
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">Raycaster</span>
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">GSAP</span>
+                        <span class="bg-white text-black text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase">HTML</span>
+                    </div>
+                    <a class="text-yoyi-yellow underline font-semibold" href="https://github.com/yoyi-codes/linea-directa-a-saltadilla">Ver en GitHub</a>
+                </div>
+            </article>
+
 
             <!-- IFI MOBILE APP -->
             <article class="flex flex-col lg:flex-row items-center gap-12 reveal">
@@ -333,46 +376,6 @@
                 </div>
             </article>
 
-            <!-- ATELIER CREATIVO -->
-            <article class="flex flex-col lg:flex-row-reverse items-center gap-12 reveal">
-                <div class="w-full lg:w-7/12 flex justify-center">
-                    <div
-                        class="relative w-full max-w-[550px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#1C1C1C] border-8 border-black rounded-xl overflow-hidden flex flex-col">
-                        <div
-                            class="w-full h-6 border-b-4 border-black bg-[#FFF8F0] flex items-center px-3 gap-2 flex-shrink-0">
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#F4939D] border-2 border-black"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#F6C445] border-2 border-black"></div>
-                            <div class="w-2.5 h-2.5 rounded-full bg-[#538F50] border-2 border-black"></div>
-                        </div>
-                        <div class="w-full aspect-video relative overflow-hidden bg-white">
-                            <video src="../assets/ux-ui/atelier.webm" autoplay loop muted playsinline
-                                class="w-full h-full object-cover"></video>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full lg:w-5/12 text-white lg:text-right flex flex-col items-start lg:items-end">
-                    <h2 class="font-display text-4xl md:text-5xl mb-4 text-yoyi-green">Atelier Creativo D&J</h2>
-                    <p class="font-mono text-lg text-white/80 leading-relaxed mb-6 text-left lg:text-right">
-                        Una exhibición artística impulsada por código que reinterpreta una obra clásica a través de
-                        elementos web interactivos. Un caso de estudio de Diseño y Programación Web desarrollado para
-                        explorar el código creativo y el diseño computacional.
-                    </p>
-                    <div class="flex flex-wrap lg:justify-end gap-2 mb-8">
-                        <span
-                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">Diseño
-                            de Interfaz</span>
-                        <span
-                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">P5.JS</span>
-                        <span
-                            class="bg-white text-black font-mono text-xs px-3 py-1 rounded-full border-2 border-black font-bold uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">HTML/CSS</span>
-                    </div>
-                    <a href="https://atelierdyj.netlify.app/" target="_blank"
-                        class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-bold text-xl border-4 border-white bg-transparent text-white hover:bg-[#F6C445] hover:border-[#F6C445] hover:!text-[#1C1C1C] transition-all shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(246,196,69,0.4)] hover:-translate-y-1 uppercase font-display">
-                        Ver Web
-                    </a>
-                </div>
-            </article>
 
             <!-- MENSAJE FINAL "OBVIO" -->
             <div class="mt-16 md:mt-24 lg:mt-32 text-center reveal w-full flex flex-col items-center">

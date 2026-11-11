@@ -53,10 +53,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../style.css">
 
-    <link rel="preload" href="../assets/tipografias/ArchivoBlack-Regular.ttf" as="font" type="font/ttf"
-        crossorigin="anonymous">
-    <link rel="preload" href="../assets/tipografias/DMMono-Medium.ttf" as="font" type="font/ttf"
-        crossorigin="anonymous">
 
     <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg" />
@@ -201,33 +197,41 @@
                     <path d="M12 0 L15 9 L24 12 L15 15 L12 24 L9 15 L0 12 L9 9 Z" /></svg>
             </div>
 
-            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-12 mb-10 lg:mb-20 leading-none lg:leading-tight tracking-normal md:tracking-wide text-white reveal text-center w-full px-4" style="animation-delay: 0.5s;">
+            <h1 class="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-12 mb-10 lg:mb-20 leading-none lg:leading-tight tracking-normal md:tracking-wide text-white text-center w-full px-4" style="animation-delay: 0.5s;">
                 
                 <span class="block lg:inline"><span class="text-yoyi-green">CRAFTED</span> <span class="text-yoyi-yellow">WITH</span></span>
                 <span class="block lg:inline"><span class="text-yoyi-blue">CARE</span><span class="text-yoyi-pink">!</span></span>
                 
             </h1>
 
-            <div class="w-[90%] md:w-full max-w-5xl mx-auto mb-6 reveal relative group z-20">
-                <div
-                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[102%] h-[105%] bg-white blur-2xl opacity-50 -z-10 rounded-3xl animate-pulse">
+            <section class="work-carousel w-[90%] md:w-full max-w-5xl mx-auto mb-6 relative z-20" aria-label="Featured work">
+                <div class="work-track" tabindex="0" id="featured-work">
+                    <article class="work-slide">
+                        <iframe class="work-video" data-src="https://player.vimeo.com/video/1229741468" title="RESURUN × Nike" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </article>
+                    <article class="work-slide">
+                        <iframe class="work-video" data-src="https://player.vimeo.com/video/1213149590" title="Thumbnail Folio" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </article>
+                    <article class="work-slide">
+                        <iframe class="work-video" data-src="https://player.vimeo.com/video/1245918249" title="LAB" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </article>
+                    <article class="work-slide">
+                        <video class="work-video" src="../assets/audiovisual/reini_barrida_1804_v2.webm" controls playsinline preload="none" aria-label="La Reini Out of Context"></video>
+                    </article>
+                    <article class="work-slide">
+                        <iframe class="work-video" data-src="https://player.vimeo.com/video/1148533408" loading="lazy"
+                            title="Showreel 2025" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </article>
                 </div>
-                <div
-                    class="rounded-2xl overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-black w-full relative z-20">
-                    <div style="padding:56.25% 0 0 0;position:relative;">
-                        <iframe
-                            src="https://player.vimeo.com/video/1148533408?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1"
-                            frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                            title="Showreel 2025"></iframe>
-                    </div>
+                <div class="work-controls" hidden>
+                    <button type="button" class="work-toggle" data-pause aria-label="Pause slideshow" aria-pressed="false"><span aria-hidden="true">Ⅱ</span></button>
+                    <button type="button" data-direction="-1" aria-controls="featured-work" aria-label="Previous">←</button>
+                    <button type="button" data-direction="1" aria-controls="featured-work" aria-label="Next">→</button>
                 </div>
-                <p class="video-caption relative z-20">✺ Showreel Dic 2025</p>
-            </div>
+            </section>
 
             <div
-                class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center reveal mt-4 relative z-20 w-[90%] md:w-auto">
+                class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mt-4 relative z-20 w-[90%] md:w-auto">
 
                 <button id="mobileViewProjectsBtn"
                     class="md:hidden w-full btn-primary px-6 py-3 rounded-full border-2 border-black text-base font-bold bg-white text-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">View
@@ -238,7 +242,7 @@
                     Projects</a>
 
                 <a href="#about"
-                    class="w-full md:w-auto px-6 py-3 md:px-10 md:py-4 rounded-full border-2 border-white text-white font-display text-base md:text-xl lg:hover:bg-white lg:hover:text-black transition-all lg:hover:scale-105 text-center">Get
+                    class="hero-about w-full md:w-auto px-6 py-3 md:px-10 md:py-4 rounded-full border-2 border-white text-white font-display text-base md:text-xl hover:bg-white transition-all lg:hover:scale-105 text-center">Get
                     to Know Me</a>
             </div>
         </section>
@@ -251,7 +255,7 @@
                 <path id="snake-path"
                     d="M 0 80 Q 250 20 500 80 T 1000 80 T 1500 80 T 2000 80 T 2500 80 T 3000 80 T 3500 80 T 4000 80 T 4500 80 T 5000 80 T 5500 80 T 6000 80"
                     fill="none" stroke="#F6C445" stroke-width="96" />
-                <text font-family="'ArchivoBlack', sans-serif" font-size="36" fill="#1C1C1C" text-transform="uppercase"
+                <text style="font-family: var(--font-display); font-weight: 800" font-size="36" fill="#1C1C1C" text-transform="uppercase"
                     letter-spacing="2" dy="12">
                     <textPath href="#snake-path" startOffset="0">
                         CRAFTING WITH CARE ✺ COLOR ✺ SHAPES · MOTION GRAPHICS · BRANDING ✦ YOYI.THESTUDIO ✦ BY JOHANA
@@ -270,14 +274,14 @@
 
         <section id="projects" class="hidden md:block py-32 px-6 bg-[#FFF8F0]">
             <div class="max-w-[1400px] mx-auto flex flex-col items-center">
-                <div class="mb-20 text-center reveal">
+                <div class="mb-20 text-center reveal-on-scroll">
                     <h2 class="font-display text-5xl md:text-7xl text-black uppercase">
                         Selected <span class="text-yoyi-green">Works</span>
                     </h2>
                 </div>
 
                 <div id="sortable-cards"
-                    class="flex flex-wrap lg:flex-nowrap justify-center items-center gap-6 lg:gap-10 w-full reveal">
+                    class="flex flex-wrap lg:flex-nowrap justify-center items-center gap-6 lg:gap-10 w-full reveal-on-scroll">
                     <div class="draggable-card-wrapper relative">
                         <a href="uxui.html"
                             class="project-card group relative overflow-hidden block w-[260px] h-[380px] rounded-3xl border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] cursor-grab active:cursor-grabbing transition-transform hover:-translate-y-3 duration-300"
@@ -334,7 +338,7 @@
                     </div>
                 </div>
 
-                <div class="mt-20 reveal relative hidden lg:flex flex-col items-center z-50">
+                <div class="mt-20 reveal-on-scroll relative hidden lg:flex flex-col items-center z-50">
                     <div
                         class="info-trigger w-12 h-12 rounded-full border-4 border-black bg-white flex items-center justify-center cursor-help shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform hover:scale-110 hover:bg-yoyi-yellow group">
                         <span class="font-display text-2xl font-bold text-black mt-1">?</span>
@@ -358,59 +362,34 @@
         <section id="about" class="py-16 md:py-24 lg:py-32 px-6 bg-white overflow-hidden relative">
 
             <div class="block lg:hidden max-w-7xl mx-auto">
-                <div class="mb-10 reveal text-center md:text-left">
-                    <h2 class="font-display text-4xl md:text-5xl text-black">
+                <div class="mb-10 reveal-on-scroll text-center md:text-left">
+                    <h2 id="about-heading" class="font-display text-4xl md:text-5xl text-black">
                         Who's <span style="color: var(--yoyi-pink);">Yoyi</span>?
                     </h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     <div class="reveal flex justify-center md:justify-start">
-                        <figure
-                            class="relative w-full max-w-[280px] md:max-w-none rounded-3xl overflow-hidden aspect-square border-4 border-black group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
-                            style="background-color: var(--yoyi-blue);">
-                            <picture>
-                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
-                                    loading="lazy">
-                            </picture>
-                            <span
-                                class="absolute bottom-4 right-4 md:bottom-8 md:right-8 inline-block px-4 py-2 rounded-full text-[10px] md:text-xs font-bold bg-[#F6C445] text-black border-2 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal">✺
-                                MULTIMEDIA DESIGNER</span>
-                        </figure>
+                        <button type="button" class="bio-poster relative w-full mx-auto max-w-[390px]">
+                            <img src="../assets/yoyi-bio-poster.webp" alt="Poster with a portrait of Johana Dávila and tear-off tabs" width="1123" height="1401" loading="lazy">
+                            <img class="bio-poster-tab" src="../assets/yoyi-bio-poster.webp" alt="" width="1123" height="1401" loading="lazy">
+                        </button>
                     </div>
 
                     <div class="reveal flex flex-col gap-4 justify-center text-center md:text-left">
 
-                        <div class="block md:hidden">
-                            <p class="about-text font-bold text-base mb-4">Hi, I’m YOYI.</p>
-                            <p class="about-text text-sm mb-4">I’m a digital artist and designer. Originally from
-                                Caracas and based in Buenos Aires, I’ve spent the last six years exploring the
-                                convergence of art and design.</p>
-                            <p class="about-text text-sm mb-4">My journey began with analog sketches, evolving into a
-                                practice where I now use motion, sound, and interactive code to make concepts feel
-                                alive.</p>
-                            <p class="about-text text-sm italic font-bold">I’m looking to partner on projects that
-                                celebrate color, texture, and artistic expression. My focus is the intersection of art,
-                                music, fashion, and audiovisual media. <span
-                                    class="block mt-2 text-[10px] text-yoyi-pink">(please check my desktop view — it
-                                    took me like 1 month with no sleep, coding till dawn, it is worth it!)</span></p>
+                        <p class="about-text about-text--lead">Multimedia Designer &amp; Motion Designer</p>
+                        <p class="about-text md:hidden">From Caracas, based in Buenos Aires. I’m a multimedia designer working in motion design and video editing at RESUMIDO. I love bringing brands and stories to life through playful animation.</p>
+                        <div class="hidden md:block space-y-4">
+                            <p class="about-text">I’m a multimedia designer from Caracas, based in Buenos Aires, with a focus on motion design and video editing.</p>
+                            <p class="about-text">I currently work at RESUMIDO, creating animated graphics and audiovisual content, while finishing my Multimedia Design degree at Escuela Da Vinci.</p>
+                            <p class="about-text">My work brings together visual identity, animation, and digital storytelling, inspired by music, internet culture, and a love for 2000s nostalgia.</p>
                         </div>
-
-                        <div class="hidden md:block">
-                            <p class="about-text font-bold text-lg mb-4">Hi, I’m Johana, known as YOYI.</p>
-                            <p class="about-text text-base mb-4">I’m a digital artist and designer with six years of
-                                experience. My journey began with analog sketches and hand-drawn illustrations, evolving
-                                into a career where I now use motion, sound, and interactive code to bring ideas to
-                                life.</p>
-                            <p class="about-text text-base mb-4">Originally from Caracas, I’ve made Buenos Aires my home
-                                for the past eight years. I’m currently finishing my degree in Multimedia Design at
-                                Escuela Da Vinci, where I’ve combined my self-taught roots with formal technical
-                                training.</p>
-                            <p class="about-text text-base font-bold">Today, I focus on projects that prioritize color,
-                                texture, and interactive expression. My goal is to keep creating at the crossroads of
-                                art, music, fashion, and audiovisual media putting my heart into every project I take
-                                on.</p>
+                        <div class="bg-[#FFF8F0] border-4 border-black p-5 space-y-3">
+                            <p class="about-text hidden md:block about-text--lead">Have something fun in mind?</p>
+                            <p class="about-text md:hidden">Available for freelance motion design and fun brand projects.</p>
+                            <p class="about-text hidden md:block">I’m available for freelance motion design, animated brand identities, and playful creative projects.</p>
+                            <a class="text-black font-semibold underline" href="#lets-talk">Let’s make something move.</a>
                         </div>
 
                     </div>
@@ -420,12 +399,12 @@
             <div class="hidden lg:block max-w-[1300px] mx-auto relative">
 
                 <div class="grid grid-cols-12 gap-6 items-end mb-24 relative">
-                    <div class="col-span-8 relative z-20 reveal">
+                    <div class="col-span-8 relative z-20 reveal-on-scroll">
                         <h2 class="font-display text-black uppercase flex flex-col tracking-tighter">
-                            <span class="text-[10rem] lg:text-[13rem] leading-none mb-2">
+                            <span class="text-[clamp(8rem,14vw,13rem)] leading-none mb-2">
                                 HI,
                             </span>
-                            <span class="text-6xl lg:text-[7rem] leading-[0.85]">
+                            <span class="text-[clamp(3.5rem,7vw,7rem)] leading-[0.85]">
                                 I'M <span class="text-yoyi-pink relative inline-block">
                                     YOYI!
                                     <svg class="absolute -top-8 -right-20 w-16 h-16 text-yoyi-yellow animate-wiggle"
@@ -441,50 +420,29 @@
 
                         <div class="flex items-center gap-4 mt-12 ml-2">
                             <div class="w-20 border-t-4 border-black"></div>
-                            <p class="font-mono text-sm uppercase tracking-widest font-bold">
-                                Digital Artist & Multimedia Designer
+                            <p class="font-mono text-sm uppercase tracking-widest font-bold text-black">
+                                Multimedia Designer &amp; Motion Designer
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-span-4 col-start-9 mt-[-120px] relative z-10 reveal">
-                        <figure
-                            class="relative w-full max-w-none rounded-[2rem] overflow-hidden aspect-[3/4] border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] bg-[#7DC3D1] group">
-                            <picture>
-                                <img src="../assets/starterpack.webp" alt="Johana Dávila, Multimedia Designer — Yoyi"
-                                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
-                                    loading="lazy">
-                            </picture>
-                            <span
-                                class="absolute bottom-6 right-6 inline-block px-4 py-2 rounded-full text-xs font-bold bg-[#F6C445] text-black border-4 border-black z-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-default uppercase tracking-widest animate-pop-diagonal rotate-[-5deg]">
-                                ✺ MULTIMEDIA DESIGNER
-                            </span>
-                        </figure>
+                    <div class="col-span-4 col-start-9 mt-[-120px] relative z-10 reveal-on-scroll">
+                        <button type="button" class="bio-poster relative w-full mx-auto max-w-none">
+                            <img src="../assets/yoyi-bio-poster.webp" alt="Poster with a portrait of Johana Dávila and tear-off tabs" width="1123" height="1401" loading="lazy">
+                            <img class="bio-poster-tab" src="../assets/yoyi-bio-poster.webp" alt="" width="1123" height="1401" loading="lazy">
+                        </button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-12 gap-16 items-start reveal">
+                <div class="grid grid-cols-12 gap-16 items-start reveal-on-scroll">
                     <div class="col-span-5 flex flex-col gap-8">
-                        <p class="about-text text-2xl font-bold leading-snug">
-                            I'm a digital artist and multimedia designer, born in Caracas, Venezuela, and currently
-                            based in Buenos Aires. I've been working on creative projects for over 6 years while
-                            finishing my degree in Multimedia Design at
-                            <span class="relative inline-block whitespace-nowrap">
-                                <span
-                                    class="absolute -inset-1 bg-yoyi-yellow -skew-y-2 -z-10 rounded-sm opacity-80"></span>
-                                <strong class="relative text-black">Escuela Da Vinci</strong>
-                            </span>.
-                        </p>
-                        <p class="about-text text-lg">
-                            During this time, I’ve worked on illustration, visual identity, social media content,
-                            streaming platforms, music releases, animation, and video editing. I love jumping between
-                            disciplines because every project lets me learn something new and find different ways to
-                            communicate an idea.
-                        </p>
+                        <p class="about-text">I’m a multimedia designer born in Caracas, Venezuela, and based in Buenos Aires, Argentina. These days, my work revolves around motion design: bringing ideas, identities, and stories to life through animation and video.</p>
+                        <p class="about-text">I currently work as a motion designer and video editor at RESUMIDO, creating animated graphics and audiovisual content for its shows and digital platforms. I’m also finishing my degree in Multimedia Design at Escuela Da Vinci.</p>
+                        <p class="about-text">My creative background spans illustration, visual identity, and digital content. I love bringing those disciplines together to make work that feels playful, expressive, and full of personality.</p>
 
                         <div
                             class="relative inline-block self-start mt-2 rotate-[3deg] bg-[#7DC3D1] text-black font-mono text-base px-6 py-3 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] font-bold transition-transform hover:rotate-0">
-                            <em>(Or maybe I'm just a nerd with way too many interests)</em> ✦
+                            <em>(And yes, I probably have a playlist for it.)</em> ✦
                             <svg class="absolute -top-12 -right-16 w-20 h-20 text-yoyi-pink" viewBox="0 0 100 100"
                                 fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
                                 stroke-linejoin="round">
@@ -494,46 +452,18 @@
                     </div>
 
                     <div class="col-span-7 flex flex-col gap-10">
-                        <blockquote
-                            class="font-display text-6xl text-yoyi-pink leading-none border-t-8 border-black pt-6 uppercase relative">
-                            "EVEN THOUGH MY WORK IS FULL OF COLOR, PLAY, AND EXPERIMENTATION, I TAKE EVERYTHING I DO
-                            VERY SERIOUSLY."
-                        </blockquote>
-
                         <div class="grid grid-cols-2 gap-10">
                             <div class="flex flex-col gap-6 relative">
-                                <p class="about-text text-lg">
-                                    I'm a <strong>highly curious person</strong>. I'm drawn to art, music, design,
-                                    fashion, illustration, books, and storytelling in all its forms. I truly enjoy
-                                    researching, observing, and connecting references.
-                                </p>
-                                <p class="about-text text-lg">
-                                    I like to understand the why behind every decision and tackle new challenges. If I
-                                    don't know how to do something today, I'll probably be researching it by tomorrow.
-                                </p>
+                                <p class="about-text">I’m a curious person with way too many interests. Music, film, fashion, illustration, and internet culture all find their way into what I make, with a soft spot for 2000s nostalgia.</p>
+                                <p class="about-text">I love figuring out how things work, connecting unexpected references, and turning a small idea into something you can watch, feel, or interact with. If I don’t know how to make it yet, I’m probably already looking it up.</p>
                             </div>
 
                             <div
-                                class="bg-[#FFF8F0] border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between hover:-translate-y-2 transition-transform duration-300">
-                                <p class="about-text text-xl font-bold mb-6">
-                                    I love collaborating with people who have ambitious projects, different
-                                    perspectives, and a drive to build something
-                                    <span class="relative inline-block">
-                                        authentic
-                                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-yoyi-green"
-                                            viewBox="0 0 100 20" preserveAspectRatio="none" fill="none"
-                                            stroke="currentColor" stroke-width="3" stroke-linecap="round">
-                                            <path d="M0,15 Q12,5 25,15 T50,15 T75,15 T100,15" />
-                                        </svg>
-                                    </span>.
-                                </p>
-                                <div class="pt-6 border-t-4 border-black/10">
-                                    <p class="about-text text-sm font-mono leading-relaxed">
-                                        <span class="text-yoyi-pink font-bold text-base">PS:</span> If you made it this
-                                        far, thanks for stopping by my site and taking the time to see what I do, it
-                                        means more than you'd imagine!
-                                    </p>
-                                </div>
+                                class="bg-[#FFF8F0] border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-4 hover:-translate-y-2 transition-transform duration-300">
+                                <p class="about-text about-text--lead">Have something fun in mind?</p>
+                                <p class="about-text">I’m available for freelance motion design projects, animated brand identities, and playful visuals for brands, people, and projects with personality.</p>
+                                <p class="about-text">Whether you have a clear brief or an idea you’re still figuring out, I’d love to hear about it.</p>
+                                <a class="text-black font-semibold underline" href="#lets-talk">Let’s make something move.</a>
                             </div>
                         </div>
                     </div>
@@ -544,13 +474,31 @@
         <section id="mind-section" class="hidden lg:block pt-32 pb-16 px-6 bg-[#1C1C1C] overflow-hidden relative">
             <div class="max-w-7xl mx-auto text-center relative z-10">
                 <h2
-                    class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[5.5rem] mb-12 text-white reveal tracking-tight flex flex-col md:block items-center justify-center">
+                    class="font-display text-4xl md:text-5xl lg:text-6xl xl:text-[5.5rem] mb-12 text-white reveal-on-scroll tracking-tight flex flex-col md:block items-center justify-center">
                     <span>PIECES</span>
                     <span class="text-yoyi-yellow">OF </span>
                     <span class="inline-block animate-wiggle text-white">ME</span>
                 </h2>
 
                 <div class="mind-container relative w-full mx-auto flex items-center justify-center">
+                    <div class="mind-words">
+                        <div>
+                            <div tabindex="0"><b aria-hidden="true">★</b><span>Caracas Girl</span></div>
+                            <div tabindex="0"><b aria-hidden="true">★</b><span>Artist</span></div>
+                        </div>
+                        <div>
+                            <div tabindex="0"><b aria-hidden="true">●</b><span>Dreamer</span></div>
+                            <div tabindex="0"><b aria-hidden="true">●</b><span>Nerd</span></div>
+                        </div>
+                        <div>
+                            <div tabindex="0"><b aria-hidden="true">▬</b><span lang="es">Porteña</span></div>
+                            <div tabindex="0"><b aria-hidden="true">▬</b><span>Dogmom</span></div>
+                        </div>
+                        <div>
+                            <div tabindex="0"><b aria-hidden="true">✦</b><span>Music Lover</span></div>
+                            <div tabindex="0"><b aria-hidden="true">✦</b><span>Late 20’s</span></div>
+                        </div>
+                    </div>
                     <div id="floating-items" class="absolute inset-0 pointer-events-none"></div>
                     <div id="yoyi-head-trigger" class="relative cursor-pointer group">
                         <img src="../assets/branding/yoyi-cara.webp" alt="Yoyi Base" loading="lazy">

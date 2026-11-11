@@ -1,4 +1,93 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.work-carousel');
+    if (carousel) {
+        const track = carousel.querySelector('.work-track');
+        const controls = carousel.querySelector('.work-controls');
+        const pause = controls.querySelector('[data-pause]');
+        const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+        const slides = Array.from(track.children);
+        const players = slides.map(slide => slide.querySelector('iframe, video'));
+        const dots = document.createElement('div');
+        dots.className = 'work-dots';
+        const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
+        const current = () => Math.round(track.scrollLeft / step());
+        const goTo = (index, smooth = true) => {
+            track.scrollTo({ left: index * step(), behavior: smooth && !reducedMotion.matches ? 'smooth' : 'instant' });
+        };
+        slides.forEach((slide, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.setAttribute('aria-label', players[index]?.title || players[index]?.getAttribute('aria-label') || slide.textContent.trim());
+            button.addEventListener('click', () => goTo(index));
+            dots.append(button);
+        });
+        controls.prepend(dots);
+        let inView = false;
+        const syncPlayers = () => {
+            const selected = current();
+            players.forEach((player, index) => {
+                dots.children[index].setAttribute('aria-current', String(index === selected));
+                if (!player) return;
+                const active = index === selected && inView && !document.hidden;
+                const autoplay = active && !reducedMotion.matches && pause.getAttribute('aria-pressed') === 'false';
+                if (player instanceof HTMLVideoElement) {
+                    if (autoplay) {
+                        player.muted = true;
+                        player.play().catch(() => {});
+                    } else {
+                        player.pause();
+                    }
+                } else if (active && !player.hasAttribute('src')) {
+                    player.src = player.dataset.src + (autoplay ? '?autoplay=1&muted=1&loop=1' : '');
+                } else if (!active) {
+                    player.removeAttribute('src');
+                }
+            });
+        };
+        const move = direction => {
+            const index = current();
+            const next = (index + direction + slides.length) % slides.length;
+            goTo(next, Math.abs(next - index) === 1);
+        };
+        controls.hidden = false;
+        controls.addEventListener('click', event => {
+            const button = event.target.closest('button[data-direction]');
+            if (button) move(Number(button.dataset.direction));
+        });
+        pause.addEventListener('click', () => {
+            const paused = pause.getAttribute('aria-pressed') === 'false';
+            pause.setAttribute('aria-pressed', String(paused));
+            const player = players[current()];
+            if (player instanceof HTMLIFrameElement) player.removeAttribute('src');
+            syncPlayers();
+        });
+        let scrollTimer;
+        track.addEventListener('scroll', () => {
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(syncPlayers, 120);
+        }, { passive: true });
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(([entry]) => {
+                inView = entry.intersectionRatio >= 0.5;
+                syncPlayers();
+            }, { threshold: 0.5 }).observe(track);
+        } else {
+            inView = true;
+        }
+        document.addEventListener('visibilitychange', syncPlayers);
+        reducedMotion.addEventListener('change', () => {
+            const player = players[current()];
+            if (player instanceof HTMLIFrameElement) player.removeAttribute('src');
+            syncPlayers();
+        });
+        syncPlayers();
+        window.setInterval(() => {
+            if (inView && !document.hidden && !reducedMotion.matches && pause.getAttribute('aria-pressed') === 'false'
+                && !carousel.matches(':hover, :focus-within')) {
+                move(1);
+            }
+        }, 8500);
+    }
 
     /* ==========================================================================
         1. VARIABLES GLOBALES Y NAVEGACIÓN MÓVIL
@@ -7,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     const logo = document.querySelector('.logo-pop');
-    const appWrapper = document.getElementById('app-wrapper');
     const marqueeContainer = document.querySelector('.marquee-container');
 
     const mobileViewProjectsBtn = document.getElementById('mobileViewProjectsBtn');
@@ -57,21 +145,38 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
         2. REVEAL AL HACER SCROLL
         ========================================================================== */
-    const revealOnScroll = () => {
-        const reveals = document.querySelectorAll('.reveal');
-        const windowHeight = window.innerHeight;
-        reveals.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < windowHeight - 100) {
-                el.classList.add('active');
-            }
-        });
-    };
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    if (reveals.length && 'IntersectionObserver' in window) {
+        const desktopMotion = matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(({ target, isIntersecting }) => {
+                if (!isIntersecting) return;
+                target.classList.add('is-visible');
+                observer.unobserve(target);
+            });
+        }, { rootMargin: '0px 0px -60px 0px', threshold: 0.15 });
 
-    if (appWrapper) {
-        appWrapper.addEventListener('scroll', revealOnScroll);
+        const syncReveals = () => {
+            observer.disconnect();
+            reveals.forEach(element => {
+                element.classList.toggle('reveal-pending', desktopMotion.matches);
+                if (desktopMotion.matches && !element.classList.contains('is-visible')) observer.observe(element);
+            });
+        };
+
+        desktopMotion.addEventListener('change', syncReveals);
+        syncReveals();
     }
-    revealOnScroll();
+
+    document.querySelectorAll('.bio-poster').forEach(poster => {
+        poster.addEventListener('click', () => {
+            poster.focus({ preventScroll: true });
+            poster.getAnimations({ subtree: true }).forEach(animation => {
+                animation.currentTime = 0;
+                animation.play();
+            });
+        });
+    });
 
     /* ==========================================================================
         3. MARQUEE INTERACTIVO

@@ -20,13 +20,108 @@
 
     <title>YOYI.THE STUDIO | Portfolio de Johana Dávila</title>
     <meta name="description" content="Portfolio de diseño multimedia de Johana Dávila. Disponible en español e inglés.">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        body {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            min-height: 100svh;
+            padding: 1.5rem;
+            background: #000;
+        }
+
+        .language-blobs {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .language-blobs .yoyi-blob {
+            width: clamp(8rem, 26vw, 24rem);
+            aspect-ratio: 1;
+            opacity: 0.3;
+            animation-duration: 9s;
+        }
+
+        .language-blobs .yoyi-blob.fast {
+            animation-duration: 6s;
+        }
+
+        .language-blobs .yoyi-blob.slow {
+            animation-duration: 12s;
+        }
+
+        main {
+            position: relative;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 7vw, 5.5rem);
+            line-height: 1.05;
+        }
+
+        p {
+            margin: 1rem 0 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .75rem;
+        }
+
+        nav a {
+            padding: .75rem 1.25rem;
+            border: 2px solid currentColor;
+            border-radius: 999px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible,
+        nav a:active {
+            background: var(--yoyi-yellow);
+            border-color: var(--yoyi-yellow);
+            color: #000;
+        }
+
+        nav a:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .language-blobs .yoyi-blob {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div style="font-family: sans-serif; text-align: center; margin-top: 100px;">
-        <h1>YOYI.THE STUDIO</h1>
-        <p>Elegí tu idioma / <span lang="en">Choose your language</span></p>
-        <a href="/en/" lang="en" style="margin-right: 15px; color: black; font-weight: bold;">English</a>
-        <a href="/es/" style="color: black; font-weight: bold;">Español</a>
+    <div class="language-blobs" aria-hidden="true">
+        <div class="yoyi-blob slow" style="top: 4%; left: 3%; background: var(--yoyi-pink)"></div>
+        <div class="yoyi-blob reverse" style="top: 12%; right: 4%; background: var(--yoyi-green)"></div>
+        <div class="yoyi-blob fast reverse" style="bottom: 3%; left: 10%; background: var(--yoyi-blue)"></div>
+        <div class="yoyi-blob slow reverse" style="bottom: 2%; right: 8%; background: var(--yoyi-yellow)"></div>
     </div>
+    <main>
+        <h1>YOYI.THESTUDIO</h1>
+        <p id="language-label">Elegí tu idioma / <span lang="en">Choose your language</span></p>
+        <nav aria-labelledby="language-label">
+            <a href="/en/" lang="en" hreflang="en">English</a>
+            <a href="/es/" hreflang="es">Español</a>
+        </nav>
+    </main>
+    <script>
+        document.querySelectorAll('.language-blobs .yoyi-blob').forEach(blob => {
+            blob.style.animationDelay = `-${Math.random() * 12}s`;
+        });
+    </script>
 </body>
 </html>
